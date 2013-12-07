@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\author{108152847 Junwei Jason Zhang \\ 109297235 Jian Jiang \\107210454 Zhenxiao Guo}
+\title{CV Final Project Proposal}
+
+
+\renewcommand{\baselinestretch}{1.2}
+\setlength{\topmargin}{-0.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\textheight}{9.1in}
+
+\fancyhfoffset{0in}
+
+\newlength{\pagewidth}
+\setlength{\pagewidth}{6.5in}
+\pagestyle{empty}
+
+\def\pp{\par\noindent}
+
+\special{papersize=8.5in,11in}
+
+
+\begin{document}
+\maketitle
+\section{Task description}
+This project's idea  comes from Prof.David Gu's previous work, 3D face tracking. The whole project contains five major steps shown below:
+\begin{enumerate}
+% \subsection{}
+\item
+Get the sample 3D face data which is captured with 3D scanner and divided into two sets. One set is composed with the 3D face data of different expressions of one person, while the other set is composed with the 3D face data of the same expression of two different individuals. What we concern about in this project is the mapping between two images with different expressions of one person, and the mapping between two images with the same expression of two persons.
+% \subsection{}
+\item
+Construct the 3D triangle mesh based on the 3D data sets.
+% \subsection{}
+\item
+Using Prof.David Gu's discrete Ricci Flow algorithm (\url{http://www.cs.sunysb.edu/~gu/}) to map 3D face data to 2D rectangle images. In this step, we can get a map between the two different images. Using this map, we can track the features in original 3D models. Because we only use the geometry information so far, we expect to get better result by adding the texture information.
+% \subsection{Key Point}
+\item \emph{Key Point}.
+Our group will use MRF (Markov Random Field) method to adjust the mapping function between two 2D images. For example, we want to match the feature points, i.e. the eyes, the lips, the noses more accurately than previous works.
+% \subsection{}
+\item
+Re-construct the 3D face model, test the improved mapping and evaluate this adjusted mapping.
+\end{enumerate}
+\section{Final Result}
+The final project result will be showed by an UI friendly software or webpage. It depends on the procedure speed of our work.
+\section{Relative Algorithms}
+\begin{enumerate}
+\item
+Computational discrete Ricci flow
+\item
+Active Shape Models
+\item
+Active Appearance Models
+\item
+Markov Random Field
+
+\end{enumerate}
+\end{document} 
