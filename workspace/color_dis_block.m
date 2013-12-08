@@ -1,6 +1,20 @@
 %color_dis_block
 function dis  = color_dis_block(template,target,indexs,indexts,blocksize,option);
 %block size are not appropriate
+
+lamda = 0.1;
+
+template = double(imread('template.png'));
+target = double (imread('target1.png'));
+
+indexs = 100;
+indexts = 100;
+blocksize = 4;
+option = 2;
+
+
+
+
 if option ==1
     templatesize = size(template);
     targetsize = size(target);
@@ -71,7 +85,7 @@ end
 
 if option ==2
     
-       templatesize = size(template);
+    templatesize = size(template);
     targetsize = size(target);
     
     indexs = indexs+blocksize;
@@ -104,8 +118,8 @@ if option ==2
         
         for i = 0: r_blocksize-1
             for j = 0: c_blocksize-1
-                c1 =( template(indexs(1)+i,indexs(2)+j)-1)/255;
-                c2=( target(indexts(1)+i,indexts(2)+j)-1)/255;
+                c1 =( template(indexs(1)+i,indexs(2)+j,:)-1)/255;
+                c2=( target(indexts(1)+i,indexts(2)+j,:)-1)/255;
                 
                 temp =   (lamda^2)*(dot(c1-c2,c2)/(norm(c2))^2) + (c1-dot(c1,c2)*c2/(norm(c2))^2)^2;
                 temps = temps+temp;
@@ -120,8 +134,8 @@ if option ==2
         for i = 0:(blocksize-1)
             for j = 0:(blocksize-1)
                 
-                c1 =( template(indexs(1)+i,indexs(2)+j)-1)/255;
-                c2=( target(indexts(1)+i,indexts(2)+j)-1)/255;
+                c1 =( template(indexs(1)+i,indexs(2)+j,:)-1)/255;
+                c2=( target(indexts(1)+i,indexts(2)+j,:)-1)/255;
                 
                 temp =   (lamda^2)*(dot(c1-c2,c2)/(norm(c2))^2) + (c1-dot(c1,c2)*c2/(norm(c2))^2)^2;
                 temps = temps+temp;
@@ -130,9 +144,7 @@ if option ==2
         end
         
         temps = temps /(blocksize*blocksize);
-        
-        
-        
+
     end
     
     
