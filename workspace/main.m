@@ -10,6 +10,6 @@ originTarget2 = double(imread('target2.png'));
 originTarget3 = double(imread('target3.png'));
 
 blockList = blockSplit(originTemplateImage);
-dis = color_dis();
+colorDis = color_dis(1);
 
 
