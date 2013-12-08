@@ -1,0 +1,31 @@
+Archive:  MRF2.2.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  08-30-2012 17:18   MRF2.2/
+    26591  11-14-2006 22:27   MRF2.2/TRW-S.cpp
+    17972  08-30-2012 16:48   MRF2.2/regions-maxprod.cpp
+    12205  08-30-2012 16:53   MRF2.2/graph.cpp
+     7897  11-27-2006 10:14   MRF2.2/MaxProdBP.cpp
+    12201  11-27-2006 10:15   MRF2.2/mrf.h
+    26050  11-14-2006 22:27   MRF2.2/BP-S.cpp
+    11681  08-30-2012 16:36   MRF2.2/energy.h
+     2390  11-14-2006 22:27   MRF2.2/BP-S.h
+     9788  08-30-2012 16:46   MRF2.2/example.cpp
+    14246  08-30-2012 17:12   MRF2.2/README.txt
+     8668  11-14-2006 22:27   MRF2.2/ICM.cpp
+     1786  11-14-2006 22:27   MRF2.2/LinkedBlockList.h
+     1577  11-14-2006 22:27   MRF2.2/regions-new.h
+     1425  11-14-2006 22:27   MRF2.2/LinkedBlockList.cpp
+    13974  03-18-2007 18:53   MRF2.2/GCoptimization.h
+     9644  08-30-2012 19:46   MRF2.2/graph.h
+     1490  11-14-2006 22:27   MRF2.2/ICM.h
+     3126  11-14-2006 22:27   MRF2.2/mrf.cpp
+     2351  11-14-2006 22:27   MRF2.2/MaxProdBP.h
+     2756  11-14-2006 22:27   MRF2.2/TRW-S.h
+      896  08-30-2012 17:17   MRF2.2/typeTruncatedQuadratic2D.h
+    45425  08-30-2012 16:32   MRF2.2/GCoptimization.cpp
+     8896  08-30-2012 16:45   MRF2.2/block.h
+     1245  08-30-2012 17:13   MRF2.2/Makefile
+    27436  11-14-2006 22:27   MRF2.2/maxflow.cpp
+---------                     -------
+   271716                     26 files
