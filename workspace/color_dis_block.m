@@ -1,7 +1,8 @@
 %color_dis_block
 function dis  = color_dis_block(template,target,indexs,indexts,blocksize,option);
 %block size are not appropriate
-
+% option = 1 for grey graph
+% option = 2 for colour graph
 lamda = 0.1;
 
 % template = double(imread('template.png'));
