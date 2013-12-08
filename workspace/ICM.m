@@ -38,7 +38,7 @@ function labels = ICM(blockList, template, target, iterations, blockSize)
 						blockDistance = color_dis_block(template, target, position, targetPos, blockSize, 1);
 					end
 					% Calculate the data term for the energy under current configuration
-					dataTerm = blockDistance;
+					dataTerm = blockDistance
 					% Calculate the pairwise term
 					pairwiseTerm = 0;
 

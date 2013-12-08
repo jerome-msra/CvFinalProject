@@ -2,15 +2,18 @@
 % Junwei Jason Zhang, Jian Jiang
 % Dept. of Computer Science, SUNY-Stony Brook
 % Efficient MRF Deformation Model for Non-Rigid Image Matching
-function main(option)
-	% if option == 1, use grayscale images
+
+
+%function main(option)
+option = 1;
+% if option == 1, use grayscale images
 	% if option == 2, use rgb images
 
 	% Read in Images and turn them into gray scale Images
-	originTemplateImage = double(imread('../template.png'));		% Template Image
-	originTarget1 = double(imread('../target1.png'));	% Target Images
-	originTarget2 = double(imread('../target2.png'));
-	originTarget3 = double(imread('../target3.png'));
+	originTemplateImage = imread('../template.png');		% Template Image
+	originTarget1 = imread('../target1.png');	% Target Images
+	originTarget2 = imread('../target2.png');
+	originTarget3 = imread('../target3.png');
 
 	grayTemplateImage = rgb2gray(originTemplateImage);
 	grayTarget1 = rgb2gray(originTarget1);
@@ -32,4 +35,4 @@ function main(option)
 	elseif option == 1
 		labels = ICM(blockList, grayTemplateImage, grayTarget1, iterations, blockSize);
 	end
-end
+%end
