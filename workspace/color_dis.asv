@@ -9,7 +9,6 @@ warning off
 % È¡Ä££ºnorm£¨x£©,norm(y)
 % ¼Ð½Ç£ºacos(dot(x,y)/norm(x)/norm(y))
 lamda = 0.1;
-t1=clock;
 if option == 1
     % gray graph
     dis = zeros(256,256);
@@ -22,9 +21,8 @@ if option == 1
     end
 else if option ==2
         % color graph
-        limit = 256;
+        limit = 1;
         for ai =1: limit
-            ai
             for aj =1: limit
                 for ak=1: limit
                     c1=[(ai-1)/255 (aj-1)/255 (ak-1)/255];
@@ -32,7 +30,7 @@ else if option ==2
                         for bj=1: limit
                             for bk =1: limit
                                 c2 = [(bi-1)/255 (bj-1)/255 (bk-1)/255];
-                                dis(ai,aj,ak,bi,bj,bk) =  (lamda^2).*(dot(c1-c2,c2)/(norm(c2))^2)+norm(      c1-(dot(c1,c2).*(c2/(norm(c2))^2) )      );
+                                dis(ai,aj,ak,bi,bj,bk) =  (lamda^2).*(dot(c1-c2,c2)/(norm(c2))^2)+(      c1-dot(c1,c2).*c2/(norm(c2))^2       )^2;
                             end
                         end
                     end
@@ -41,9 +39,7 @@ else if option ==2
         end
     end
 end
-t2= clock;
 
-etime(t2,t1)
 
 
 
