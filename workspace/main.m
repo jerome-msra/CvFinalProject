@@ -42,7 +42,7 @@ option = 1;
 	end
 
 	% draw the result
-	drawResult(grayTemplateImage, grayTarget1, blockList, labels, blockSize);
+	[resultTemplate resultTarget] = drawResult(grayTemplateImage, grayTarget1, blockList, labels, blockSize);
     t2= clock;
     etime(t2,t1);
 

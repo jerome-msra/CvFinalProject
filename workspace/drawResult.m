@@ -1,4 +1,4 @@
-function drawResult(template, target, blockList, labels, blockSize)
+function [resultTemplate resultTarget] = drawResult(template, target, blockList, labels, blockSize)
 	% This function is used to show the deformation result
 	% draw the template region and target region on template image and target image
 	% Input: template - tempalte image
