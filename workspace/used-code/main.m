@@ -7,7 +7,7 @@
 %function main(option)
 
 t1= clock;
-option = 2;
+option = 1;
 	% if option == 1, use grayscale images
 	% if option == 2, use rgb images
 
@@ -36,13 +36,13 @@ option = 2;
 	% Get the labels through ICM optimization
 	disp('ICM iterations...');
 	if option == 2
-		labels = ICM(blockList, originTemplateImage, originTarget1, iterations, blockSize,option);
+		labels = ICM(blockList, grayTemplateImage, grayTarget1, iterations, blockSize,option);
 	elseif option == 1
 		labels = ICM(blockList, grayTemplateImage, grayTarget1, iterations, blockSize,option);
 	end
 
 	% draw the result
-	drawResult(originTemplateImage, originTarget1, blockList, labels, blockSize);
+	[resultTemplate resultTarget] = drawResult(grayTemplateImage, grayTarget1, blockList, labels, blockSize);
     t2= clock;
     etime(t2,t1);
 

@@ -7,7 +7,7 @@
 %function main(option)
 
 t1= clock;
-option = 1;
+option = 2;
 	% if option == 1, use grayscale images
 	% if option == 2, use rgb images
 
@@ -42,7 +42,7 @@ option = 1;
 	end
 
 	% draw the result
-	[resultTemplate resultTarget] = drawResult(grayTemplateImage, grayTarget1, blockList, labels, blockSize);
+	drawResult(originTemplateImage, originTarget1, blockList, labels, blockSize);
     t2= clock;
     etime(t2,t1);
 
