@@ -4,7 +4,10 @@
 % Efficient MRF Deformation Model for Non-Rigid Image Matching
 
 
-function main(option)
+%function main(option)
+
+t1= clock;
+option = 1;
 	% if option == 1, use grayscale images
 	% if option == 2, use rgb images
 
@@ -40,4 +43,7 @@ function main(option)
 
 	% draw the result
 	drawResult(grayTemplateImage, grayTarget1, blockList, labels, blockSize);
-end
+    t2= clock;
+    etime(t2,t1);
+
+    %end
