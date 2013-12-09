@@ -1,4 +1,4 @@
-function labels = ICM(blockList, template, target, iterations, blockSize)
+function labels = ICM(blockList, template, target, iterations, blockSize,option)
 	% This function gives the labels of MRF using ICM optimization
 	% Input: blockList - the list of blocks
 	% 		 template - the template image
@@ -8,6 +8,8 @@ function labels = ICM(blockList, template, target, iterations, blockSize)
 		[width height c] = size(template);
 	else
 		[width height] = size(template);
+    end
+    
 
 	% blockNumber - the number of blocks
 	blockNumber = size(blockList, 1);
@@ -34,7 +36,7 @@ function labels = ICM(blockList, template, target, iterations, blockSize)
 					blockDistance = 0;
 					if (position(1)+xTrans > 0 && position(1)+xTrans+blockSize-1 < width) && (position(2)+yTrans > 0 && position(2)+yTrans+blockSize-1 < height)
 						targetPos = [position(1)+xTrans position(2)+yTrans];
-						blockDistance = color_dis_block(template, target, position, targetPos, blockSize, 1);
+						blockDistance = color_dis_block(template, target, position, targetPos, blockSize, option);
 					end
 					% Calculate the data term for the energy under current configuration
 					dataTerm = blockDistance;
