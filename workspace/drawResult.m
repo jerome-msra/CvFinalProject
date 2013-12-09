@@ -55,5 +55,6 @@ function drawResult(template, target, blockList, labels, blockSize)
 	subplot(2,1,1);
 	imshow(resultTemplate);
 	subplot(2,1,2);
+    save resultTarget
 	imshow(resultTarget);
 end

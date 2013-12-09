@@ -32,7 +32,7 @@ option = 2;
 	end
 	fprintf('Total Block Number %d\n', size(blockList, 1));
 	% Specify the number of iterations for ICM
-	iterations = 1;
+	iterations = 4;
 	% Get the labels through ICM optimization
 	disp('ICM iterations...');
 	if option == 2
@@ -42,7 +42,7 @@ option = 2;
 	end
 
 	% draw the result
-	drawResult(grayTemplateImage, grayTarget1, blockList, labels, blockSize);
+	drawResult(originTemplateImage, originTarget1, blockList, labels, blockSize);
     t2= clock;
     etime(t2,t1);
 
