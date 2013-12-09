@@ -5,15 +5,16 @@ function blockList = blockSplit(template, blockSize)
 	% Output: A blockList matrix n*2,where n is the number of blocks and each row stands for the top-left
 	% corner position
 	% Convert the template to gray scale image
-	if size(size(template)) == [1 3]
+	if size(template, 3) == 3
 		template = rgb2gray(template);
 	end
 
-	[m n] = size(template)
+	[m n] = size(template);
+	fprintf('Image size = %d*%d.\n', m, n);
 	blockList = zeros(0,2);
 	for i = 1:blockSize:m
 		for j = 2:blockSize:n
-			if template(i,j) > 0
+			if (template(i,j) > 0) && (i+blockSize-1 <= m) && (j+blockSize-1 <= n)
 				blockList = [ blockList; i j];
 			end
 		end

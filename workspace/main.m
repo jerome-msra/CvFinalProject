@@ -4,9 +4,8 @@
 % Efficient MRF Deformation Model for Non-Rigid Image Matching
 
 
-%function main(option)
-option = 1;
-% if option == 1, use grayscale images
+function main(option)
+	% if option == 1, use grayscale images
 	% if option == 2, use rgb images
 
 	% Read in Images and turn them into gray scale Images
@@ -22,17 +21,23 @@ option = 1;
 
 	blockSize = 4;
 	% Get the blocks
+	disp('Spliting image into blocks...');
 	if option == 2
 		blockList = blockSplit(originTemplateImage, blockSize);
 	elseif option == 1
 		blockList = blockSplit(grayTemplateImage, blockSize);
 	end
+	fprintf('Total Block Number %d\n', size(blockList, 1));
 	% Specify the number of iterations for ICM
 	iterations = 1;
 	% Get the labels through ICM optimization
+	disp('ICM iterations...');
 	if option == 2
 		labels = ICM(blockList, originTemplateImage, originTarget1, iterations, blockSize);
 	elseif option == 1
 		labels = ICM(blockList, grayTemplateImage, grayTarget1, iterations, blockSize);
 	end
-%end
+
+	% draw the result
+	drawResult(grayTemplateImage, grayTarget1, blockList, labels, blockSize);
+end
