@@ -4,8 +4,10 @@ function labels = ICM(blockList, template, target, iterations, blockSize)
 	% 		 template - the template image
 	% 		 target - the target image
 	% 		 iterations - the number of ICM iterations
-
-	[width height c] = size(template);
+	if size(size(template)) == 3
+		[width height c] = size(template);
+	else
+		[width height] = size(template);
 
 	% blockNumber - the number of blocks
 	blockNumber = size(blockList, 1);
@@ -13,29 +15,39 @@ function labels = ICM(blockList, template, target, iterations, blockSize)
 	deltaI = 1;
 	cR = 0.001;
 	labelRange = 30;
+
 	labels = zeros(blockNumber, 2);
+
 	for i = 1:iterations
 		for b = 1:blockNumber
 			position = blockList(b);
-			minEnergy = -1;
+			minEnergy = Inf;
+			minLabel = [0 0];
 			for xTrans = -labelRange:labelRange
 				for yTrans = -labelRange:labelRange
+					singleEnergy = 0;
+					dataTerm = 0;
 					if (position(1)+xTrans > 0 and position(1)+xTrans+blockSize-1 < width) and (position(2)+yTrans > 0 and position(2)+yTrans+blockSize-1 < height)
 						targetPos = [position(1)+xTrans position(2)+yTrans];
 						blockDistance = color_dis_block(template, target, position, targetPos, blockSize, 1);
 					end
-					% Calculate the data term under current configuration
-					dataTerm = 0;
-					for bn = 1:blockNumber
-						if bn ~= b
-							dataTerm = dataTerm + color_dis_block(template, target, position, position+labels(bn), blockSize, 1);
-						else
-							dataTerm = dataTerm + blockDistance
-					end
-					dataTerm = dataTerm / (2*deltaI)
-					% Calculate the pairwise term under current configuration
+					% Calculate the data term for the energy under current configuration
+					dataTerm = blockDistance;
+					% Calculate the pairwise term
 					pairwiseTerm = 0;
-
+					% Find the index in blockList of the neighbour blocks of current block
+					% and it's a vector
+					neighboursIndex = findNeighbours(blockList, position, blockSize);
+					for n = 1:size(neighboursIndex)
+						neighTrans = labels(neighboursIndex(n),:);
+						singlePairwiseTerm = calcPairwise([xTrans yTrans], neighTrans, cR);
+						pairwiseTerm = pairwiseTerm + singlePairwiseTerm;
+					end
+					singleEnergy = dataTerm + pairwiseTerm;
+					if singleEnergy < minEnergy
+						minEnergy = singleEnergy;
+						minLabel = [xTrans yTrans]
+					end
 				end
 			end
 		end
