@@ -36,8 +36,8 @@ function drawResult(template, target, blockList, labels, blockSize)
 
     % 	Draw blocks on target image
 	for b = 1:size(labels, 1)
-		xPos = labels(b,1);
-		yPos = labels(b,2);
+		xPos = blockList(b,1) + labels(b,1);
+		yPos = blockList(b,2) + labels(b,2);
 		if gray == 0 % rgb image
 			resultTarget(xPos, yPos:yPos+blockSize-1, 1) = 255; resultTarget(xPos, yPos:yPos+blockSize-1, 2) = 0; resultTarget(xPos, yPos:yPos+blockSize-1, 3) = 0;
 			resultTarget(xPos+blockSize-1, yPos:yPos+blockSize-1, 1) = 255; resultTarget(xPos+blockSize-1, yPos:yPos+blockSize-1, 2) = 0; resultTarget(xPos+blockSize-1, yPos:yPos+blockSize-1, 3) = 0;
@@ -51,7 +51,7 @@ function drawResult(template, target, blockList, labels, blockSize)
 		end
 	end
 
-	Show the result
+	% Show the result
 	subplot(2,1,1);
 	imshow(resultTemplate);
 	subplot(2,1,2);
