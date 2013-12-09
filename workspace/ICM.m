@@ -20,14 +20,13 @@ function labels = ICM(blockList, template, target, iterations, blockSize)
 
 	for i = 1:iterations
 		for b = 1:blockNumber
-			b
+			fprintf('Block Number %d\n',b);
 			position = blockList(b,:);
 			minEnergy = Inf;
 			minLabel = [0 0];
 			% Find the index in blockList of the neighbour blocks of current block
 			% and it's a vector
 			neighboursIndex = findNeighbours(blockList, position, blockSize);
-			neighboursIndex
 			for xTrans = -labelRange:labelRange
 				for yTrans = -labelRange:labelRange
 					singleEnergy = 0;
@@ -38,7 +37,7 @@ function labels = ICM(blockList, template, target, iterations, blockSize)
 						blockDistance = color_dis_block(template, target, position, targetPos, blockSize, 1);
 					end
 					% Calculate the data term for the energy under current configuration
-					dataTerm = blockDistance
+					dataTerm = blockDistance;
 					% Calculate the pairwise term
 					pairwiseTerm = 0;
 
@@ -50,10 +49,11 @@ function labels = ICM(blockList, template, target, iterations, blockSize)
 					singleEnergy = dataTerm + pairwiseTerm;
 					if singleEnergy < minEnergy
 						minEnergy = singleEnergy;
-						minLabel = [xTrans yTrans]
+						minLabel = [xTrans yTrans];
 					end
 				end
 			end
+			labels(b,:) = minLabel;
 		end
 	end
 end
