@@ -20,14 +20,20 @@ function labels = ICM(blockList, template, target, iterations, blockSize)
 
 	for i = 1:iterations
 		for b = 1:blockNumber
-			position = blockList(b);
+			b
+			position = blockList(b,:);
 			minEnergy = Inf;
 			minLabel = [0 0];
+			% Find the index in blockList of the neighbour blocks of current block
+			% and it's a vector
+			neighboursIndex = findNeighbours(blockList, position, blockSize);
+			neighboursIndex
 			for xTrans = -labelRange:labelRange
 				for yTrans = -labelRange:labelRange
 					singleEnergy = 0;
 					dataTerm = 0;
-					if (position(1)+xTrans > 0 and position(1)+xTrans+blockSize-1 < width) and (position(2)+yTrans > 0 and position(2)+yTrans+blockSize-1 < height)
+					blockDistance = 0;
+					if (position(1)+xTrans > 0 && position(1)+xTrans+blockSize-1 < width) && (position(2)+yTrans > 0 && position(2)+yTrans+blockSize-1 < height)
 						targetPos = [position(1)+xTrans position(2)+yTrans];
 						blockDistance = color_dis_block(template, target, position, targetPos, blockSize, 1);
 					end
@@ -35,9 +41,7 @@ function labels = ICM(blockList, template, target, iterations, blockSize)
 					dataTerm = blockDistance;
 					% Calculate the pairwise term
 					pairwiseTerm = 0;
-					% Find the index in blockList of the neighbour blocks of current block
-					% and it's a vector
-					neighboursIndex = findNeighbours(blockList, position, blockSize);
+
 					for n = 1:size(neighboursIndex)
 						neighTrans = labels(neighboursIndex(n),:);
 						singlePairwiseTerm = calcPairwise([xTrans yTrans], neighTrans, cR);
