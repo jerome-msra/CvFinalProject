@@ -15,7 +15,7 @@ function drawResult(template, target, blockList, labels, blockSize)
 	end
 
 	resultTemplate = template;
-	% resultTarget = target;
+	resultTarget = target;
 
 	% Draw blocks on template image
 	for b = 1:size(blockList, 1)
@@ -32,9 +32,9 @@ function drawResult(template, target, blockList, labels, blockSize)
 			resultTemplate(xPos:xPos+blockSize-1, yPos) = 255;
 			resultTemplate(xPos:xPos+blockSize-1, yPos+blockSize-1) = 255;
 		end
-	end
+    end
 
-	Draw blocks on target image
+    % 	Draw blocks on target image
 	for b = 1:size(labels, 1)
 		xPos = labels(b,1);
 		yPos = labels(b,2);
