@@ -4,7 +4,7 @@ function labels = ICM(blockList, template, target, iterations, blockSize)
 	% 		 template - the template image
 	% 		 target - the target image
 	% 		 iterations - the number of ICM iterations
-	if size(size(template)) == 3
+	if size(size(template)) == [1 3]
 		[width height c] = size(template);
 	else
 		[width height] = size(template);
