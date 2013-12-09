@@ -9,7 +9,10 @@ originTarget1 = double(imread('target1.png'));	% Target Images
 originTarget2 = double(imread('target2.png'));
 originTarget3 = double(imread('target3.png'));
 
-blockList = blockSplit(originTemplateImage);
-colorDis = color_dis(1);
-
-
+blockSize = 4;
+% Get the blocks
+blockList = blockSplit(originTemplateImage, blockSize);
+% Specify the number of iterations for ICM
+iterations = 100;
+% Get the labels through ICM optimization
+labels = ICM(blockList, originTemplateImage, originTarget1, iteratioins, blockSize);
