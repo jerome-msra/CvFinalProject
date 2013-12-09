@@ -1,5 +1,5 @@
 %color_dis_block
-function dis  = color_dis_block(template,target,indexs,indexts,blocksize,option);
+function dis  = color_dis_block(template,target,indexs,indexts,blocksize,ColorDisHash,option);
 %block size are not appropriate
 % option = 1 for grey graph
 % option = 2 for colour graph
@@ -7,7 +7,7 @@ lamda = 0.1;
 
 % template = double(imread('template.png'));
 % target = double (imread('target1.png'));
-% 
+%
 % indexs = [100 100];
 % indexts = [100 100];
 % blocksize = 4;
@@ -185,9 +185,9 @@ if option ==2
             temps = temps /(blocksize*blocksize);
             
         end
-
+        
     end
-
+    
 end
 
 
