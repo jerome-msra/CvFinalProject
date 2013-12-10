@@ -1,5 +1,5 @@
 %return the string of c1 and c2
-function s = StringCC (c1,c2,option)
+function s = TwoColor2String (c1,c2,option)
 
 if option ==2
     s1=num2str(c1(1),'%03d');

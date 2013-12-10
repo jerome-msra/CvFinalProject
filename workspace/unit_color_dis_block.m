@@ -1,20 +1,22 @@
 %process color image
 
-function [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda)
+function [distance,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda,option)
 
 %find c1 and c2 whether in the ColorDisHash table
 %If exist renturn
 %If not compute the new value and return the distance
-s= TwoColor2String(c1,c2);
+s= TwoColor2String(c1,c2,option);
 
-if ColorDisHash.containKey(s)
+if ColorDisHash.containsKey(s)
     
     distance = ColorDisHash.get(s);
     disp ('I find');
     ColorDisHash = ColorDisHash;
     
 else
-    [distance ColorDisHash] = ComColorDisUpTable(c1,c2,ColorDisHash,lamda);
+    [distance, ColorDisHash] = ComColorDisUpTable(c1,c2,ColorDisHash,lamda,option);
+    distance = distance;
+    ColorDisHash = ColorDisHash;
 end
 
 end
