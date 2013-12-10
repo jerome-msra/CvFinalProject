@@ -75,7 +75,7 @@ if option ==1
                     c1 =template(indexs(1)+i,indexs(2)+j);
                     c2=target(indexts(1)+i,indexts(2)+j);
                     
-                    [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda);
+                    [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda,option);
                     
                     temps = temps+temp;
                     
@@ -94,7 +94,7 @@ if option ==1
                     c1 =template(indexs(1)+i,indexs(2)+j);
                     c2=target(indexts(1)+i,indexts(2)+j);
                     
-                    [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda);
+                    [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda,option);
                     
                     temps = temps+temp;
                 end
@@ -153,11 +153,12 @@ if option ==2
             for i = 0: r_blocksize-1
                 for j = 0: c_blocksize-1
                     
-                    c1 =double( template(indexs(1)+i,indexs(2)+j,:)-1)/255.0;
+                    c1 =template(indexs(1)+i,indexs(2)+j,:);
                     c1 = [c1(1,1,1)  c1(1,1,2) c1(1,1,3)];
-                    c2=double( target(indexts(1)+i,indexts(2)+j,:)-1)/255.0;
+                    c2= target(indexts(1)+i,indexts(2)+j,:);
                     c2= [c2(1,1,1) c2(1,1,2) c2(1,1,3)];
-                    temp =   (lamda^2).*(dot(c1-c2,c2)/(norm(c2))^2)+norm(      c1-(dot(c1,c2).*(c2/(norm(c2))^2) )      );
+                    
+                    [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda,option);
                     temps = temps+temp;
                     
                 end
@@ -173,12 +174,13 @@ if option ==2
             for i = 0:limit
                 for j = 0:limit
                     
-                    c1 =double( template(indexs(1)+i,indexs(2)+j,:)-1)/255.0;
+                    c1 =template(indexs(1)+i,indexs(2)+j,:);
                     c1 = [c1(1,1,1)  c1(1,1,2) c1(1,1,3)];
-                    c2=double( target(indexts(1)+i,indexts(2)+j,:)-1)/255.0;
+                    c2=target(indexts(1)+i,indexts(2)+j,:);
                     c2= [c2(1,1,1) c2(1,1,2) c2(1,1,3)];
-                    temp =   (lamda^2).*(dot(c1-c2,c2)/(norm(c2))^2)+norm(      c1-(dot(c1,c2).*(c2/(norm(c2))^2) )      );
+                    [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda,option);
                     temps = temps+temp;
+                    
                     
                 end
             end

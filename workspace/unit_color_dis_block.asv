@@ -1,6 +1,6 @@
 %process color image
 
-function [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda)
+function [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda,option)
 
 %find c1 and c2 whether in the ColorDisHash table
 %If exist renturn
@@ -14,7 +14,7 @@ if ColorDisHash.containKey(s)
     ColorDisHash = ColorDisHash;
     
 else
-    [distance ColorDisHash] = ComColorDisUpTable(c1,c2,ColorDisHash,lamda);
+    [distance ColorDisHash] = ComColorDisUpTable(c1,c2,ColorDisHash,lamda,option);
 end
 
 end
