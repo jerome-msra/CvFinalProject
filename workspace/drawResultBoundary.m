@@ -27,29 +27,30 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 	for b = 1:size(blockList,1)
 		xPos = blockList(b,1);
 		yPos = blockList(b,2);
-		if findInBlockList(blockList, [xPos-blockSize+1 yPos]) == 0 
+		% findInBlockList(blockList, [xPos-blockSize yPos])
+		if findInBlockList(blockList, [xPos-blockSize yPos]) == 0 
 		% there is no block which is above current block
 		% meaning that current block is the topest block in this column
-			topTemplateList = [topTemplateList; [b xPos yPos];
-			resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray);	  
+			topTemplateList = [topTemplateList; [b xPos yPos]];
+			resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray, blockSize);	  
 		end
 
-		if findInBlockList(blockList, [xPos+blockSize-1 yPos]) == 0
+		if findInBlockList(blockList, [xPos+blockSize yPos]) == 0
 			bottomTemplateList = [bottomTemplateList; [b xPos yPos]];
-			resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray);
+			resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray, blockSize);
 		end
 
-		if findInBlockList(blockList, [xPos yPos-blockSize+1]) == 0
+		if findInBlockList(blockList, [xPos yPos-blockSize]) == 0
 			leftTemplateList = [leftTemplateList; [b xPos yPos]];
-			resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray);
+			resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray, blockSize);
 		end
 
-		if findInBlockList(blockList, [xPos yPos+blockSize-1]) == 0
+		if findInBlockList(blockList, [xPos yPos+blockSize]) == 0
 			rightTemplateList = [rightTemplateList; [b xPos yPos]];
-			resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray);
+			resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray, blockSize);
 		end
 	end
-
+	
 	% For target image
 	% because the block may be scaled, some boundary blocks may be moved apart
 	% So we need to add some boundary lines between them
@@ -67,7 +68,7 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 	for t = 1:size(topTemplateList,1)
 		xPos = topTemplateList(t,2) + labels(topTemplateList(t,1),1);
 		yPos = topTemplateList(t,3) + labels(topTemplateList(t,1),2);
-		resultTarget = drawBlock(resultTarget, [xPos yPos], gray);
+		resultTarget = drawBlock(resultTarget, [xPos yPos], gray, blockSize);
 		if t < size(topTemplateList,1)
 			pPos = topTemplateList(t+1,2) + labels(topTemplateList(t+1,1),1);
 			qPos = topTemplateList(t+1,3) + labels(topTemplateList(t+1,1),2);
@@ -79,7 +80,7 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 	for b = 1:size(bottomTemplateList,1)
 		xPos = bottomTemplateList(b,2) + labels(bottomTemplateList(b,1),1);
 		yPos = bottomTemplateList(b,3) + labels(bottomTemplateList(b,1),2);
-		resultTarget = drawBlock(resultTarget, [xPos yPos], gray);
+		resultTarget = drawBlock(resultTarget, [xPos yPos], gray, blockSize);
 		if b < size(bottomTemplateList,1)
 			pPos = bottomTemplateList(b+1,2) + labels(bottomTemplateList(b+1,1),1);
 			qPos = bottomTemplateList(b+1,3) + labels(bottomTemplateList(b+1,1),2);
@@ -91,7 +92,7 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 	for l = 1:size(leftTemplateList,1)
 		xPos = leftTemplateList(l,2) + labels(leftTemplateList(l,1),1);
 		yPos = leftTemplateList(l,3) + labels(leftTemplateList(l,1),2);
-		resultTarget = drawBlock(resultTarget, [xPos yPos], gray);
+		resultTarget = drawBlock(resultTarget, [xPos yPos], gray, blockSize);
 		if l < size(leftTemplateList,1)
 			pPos = leftTemplateList(l+1,2) + labels(leftTemplateList(l+1,1),1);
 			qPos = leftTemplateList(l+1,3) + labels(leftTemplateList(l+1,1),2);
@@ -103,7 +104,7 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 	for r = 1:size(rightTemplateList,1)
 		xPos = rightTemplateList(r,2) + labels(rightTemplateList(r,1),1);
 		yPos = rightTemplateList(r,3) + labels(rightTemplateList(r,1),2);
-		resultTarget = drawBlock(resultTarget, [xPos yPos], gray);
+		resultTarget = drawBlock(resultTarget, [xPos yPos], gray, blockSize);
 		if r < size(rightTemplateList,1)
 			pPos = rightTemplateList(r+1,2) + labels(rightTemplateList(r+1,1),1);
 			qPos = rightTemplateList(r+1,3) + labels(rightTemplateList(r+1,1),2);

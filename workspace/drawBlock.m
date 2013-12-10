@@ -1,4 +1,4 @@
-function resultImage = drawBlock(image, block, gray)
+function resultImage = drawBlock(image, block, gray, blockSize)
 	% This function is used to draw single block
 	% returns the image drawn
 	resultImage = image;

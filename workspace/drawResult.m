@@ -19,14 +19,14 @@ function [resultTemplate resultTarget] = drawResult(template, target, blockList,
 
 	% Draw blocks on template image
 	for b = 1:size(blockList, 1)
-		resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray);
+		resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray, blockSize);
     end
 
     % 	Draw blocks on target image
 	for b = 1:size(labels, 1)
 		xPos = blockList(b,1) + labels(b,1);
 		yPos = blockList(b,2) + labels(b,2);
-		resultTarget = drawBlock(resultTarget, [xPos yPos], gray);
+		resultTarget = drawBlock(resultTarget, [xPos yPos], gray, blockSize);
 	end
 
 	% Show the result
