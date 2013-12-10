@@ -7,7 +7,7 @@
 %function main(option)
 
 t1= clock;
-option = 1;
+option = 2;
 
 % if option == 1, use grayscale images
 % if option == 2, use rgb images
@@ -33,7 +33,7 @@ elseif option == 1
 end
 fprintf('Total Block Number %d\n', size(blockList, 1));
 % Specify the number of iterations for ICM
-iterations = 1;
+iterations = 4;
 % Get the labels through ICM optimization
 disp('ICM iterations...');
 if option == 2

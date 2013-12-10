@@ -17,10 +17,11 @@ if option ==2
     end
     
     s= strcat(s1,s2);
-end
-if option == 1
+    
+elseif option == 1
     s1=num2str(c1(1),'%03d');
     s2= num2str(c2(1),'%03d');
     s= strcat(s1,s2);
 end
 
+s=s;

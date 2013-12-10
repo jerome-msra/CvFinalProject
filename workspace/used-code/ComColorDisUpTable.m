@@ -14,14 +14,14 @@ if option == 1
     distance =   (lamda^2).*(dot(tempc1-tempc2,tempc2)/(norm(tempc2))^2)+norm(      tempc1-(dot(tempc1,tempc2).*(tempc2/(norm(tempc2))^2) )      );
     ColorDisHash.put(s,distance);
     
-    fprintf('distance : %d %s', distance,s);
+   % fprintf('distance : %d   string :  %s \n', distance,s);
     for i = -1:0
         for j= -1:0
             tempc1= c1+(-1)^i;
             tempc2= c2+(-1)^j;
             s= TwoColor2String(tempc1,tempc2,option);
-            ColorDisHash.put(s.distance);
-            fprintf('distance : %d %s', distance,s);
+            ColorDisHash.put(s,distance);
+    %        fprintf('distance : %d   string :  %s \n', distance,s);
         end
     end
     
@@ -40,7 +40,7 @@ elseif option ==2
     
     distance =   (lamda^2).*(dot(tempc1-tempc2,tempc2)/(norm(tempc2))^2)+norm(      tempc1-(dot(tempc1,tempc2).*(tempc2/(norm(tempc2))^2) )      );
     ColorDisHash.put(s,distance);
-    fprintf('distance : %d %s', distance,s);
+   % fprintf('distance : %d   string :  %s \n', distance,s);
     %compute nearby distance and save the nerighbor value
     for i = -1 :0
         for j = -1:0
@@ -54,7 +54,7 @@ elseif option ==2
                             
                             s= TwoColor2String(tempc1,tempc2,option);
                             ColorDisHash.put(s,distance);
-                            fprintf('distance : %d %s', distance,s);
+                        %    fprintf('distance : %d   string :  %s \n', distance,s);
                         end
                     end
                 end

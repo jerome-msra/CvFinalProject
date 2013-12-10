@@ -1,5 +1,5 @@
 %color_dis_block
-function dis  = color_dis_block(template,target,indexs,indexts,blocksize,ColorDisHash,option)
+function dis  = color_dis_block(template,target,indexs,indexts,blocksize,option)
 %block size are not appropriate
 % option = 1 for grey graph
 % option = 2 for colour graph
@@ -75,7 +75,7 @@ if option ==1
                     c1 =template(indexs(1)+i,indexs(2)+j);
                     c2=target(indexts(1)+i,indexts(2)+j);
                     
-                    [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda,option);
+                    [temp] = unit_color_dis_block(c1,c2,lamda,option);
                     
                     temps = temps+temp;
                     
@@ -94,7 +94,7 @@ if option ==1
                     c1 =template(indexs(1)+i,indexs(2)+j);
                     c2=target(indexts(1)+i,indexts(2)+j);
                     
-                    [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda,option);
+                    temp = unit_color_dis_block(c1,c2,lamda,option);
                     
                     temps = temps+temp;
                 end
@@ -158,7 +158,7 @@ if option ==2
                     c2= target(indexts(1)+i,indexts(2)+j,:);
                     c2= [c2(1,1,1) c2(1,1,2) c2(1,1,3)];
                     
-                    [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda,option);
+                    [temp] = unit_color_dis_block(c1,c2,lamda,option);
                     temps = temps+temp;
                     
                 end
@@ -178,7 +178,7 @@ if option ==2
                     c1 = [c1(1,1,1)  c1(1,1,2) c1(1,1,3)];
                     c2=target(indexts(1)+i,indexts(2)+j,:);
                     c2= [c2(1,1,1) c2(1,1,2) c2(1,1,3)];
-                    [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda,option);
+                    [temp] = unit_color_dis_block(c1,c2,lamda,option);
                     temps = temps+temp;
                     
                     

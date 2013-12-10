@@ -25,7 +25,7 @@ labels = zeros(blockNumber, 2);
 for i = 1:iterations
     for b = 1:blockNumber
        % fprintf('Block Number %d   ColorDisHashSize %d\n',b,ColorDisHash.size());
-        fprintf('Block Number %d \n',b);
+        fprintf('Block Number %d \n',b,ColorDisHash.size());
         position = blockList(b,:);
         minEnergy = Inf;
         minLabel = [0 0];
