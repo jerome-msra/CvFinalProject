@@ -1,5 +1,5 @@
 %color_dis_block
-function dis  = color_dis_block(template,target,indexs,indexts,blocksize,ColorDisHash,option);
+function dis  = color_dis_block(template,target,indexs,indexts,blocksize,ColorDisHash,option)
 %block size are not appropriate
 % option = 1 for grey graph
 % option = 2 for colour graph
@@ -71,12 +71,14 @@ if option ==1
             
             for i = 0: r_blocksize-1
                 for j = 0: c_blocksize-1
-                    c1 =double( template(indexs(1)+i,indexs(2)+j)-1)/255.0;
-                    c2=double( target(indexts(1)+i,indexts(2)+j)-1)/255.0;
-                    c1= double(c1);
-                    c2 = double (c2);
-                    temp =   (lamda^2)*(dot(c1-c2,c2)/(norm(c2))^2) + (c1-dot(c1,c2)*c2/(norm(c2))^2)^2;
+                    
+                    c1 =template(indexs(1)+i,indexs(2)+j);
+                    c2=target(indexts(1)+i,indexts(2)+j);
+                    
+                    [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda);
+                    
                     temps = temps+temp;
+                    
                 end
             end
             
@@ -89,13 +91,12 @@ if option ==1
             for i = 0:(blocksize-1)
                 for j = 0:(blocksize-1)
                     
-                    c1 =double( template(indexs(1)+i,indexs(2)+j)-1)/255.0;
-                    c2=double( target(indexts(1)+i,indexts(2)+j)-1)/255.0;
-                    c1= double(c1);
-                    c2 = double (c2);
-                    temp =   (lamda^2)*(dot(c1-c2,c2)/(norm(c2))^2) + (c1-dot(c1,c2)*c2/(norm(c2))^2)^2;
-                    temps = temps+temp;
+                    c1 =template(indexs(1)+i,indexs(2)+j);
+                    c2=target(indexts(1)+i,indexts(2)+j);
                     
+                    [temp,ColorDisHash] = unit_color_dis_block(c1,c2,ColorDisHash,lamda);
+                    
+                    temps = temps+temp;
                 end
             end
             
@@ -192,6 +193,7 @@ end
 
 
 dis = temps;
+end
 
 
 
