@@ -19,42 +19,19 @@ function [resultTemplate resultTarget] = drawResult(template, target, blockList,
 
 	% Draw blocks on template image
 	for b = 1:size(blockList, 1)
-		xPos = blockList(b,1);
-		yPos = blockList(b,2);
-		if gray == 0 % rgb image
-			resultTemplate(xPos, yPos:yPos+blockSize-1, 1) = 255; resultTemplate(xPos, yPos:yPos+blockSize-1, 2) = 0; resultTemplate(xPos, yPos:yPos+blockSize-1, 3) = 0;
-			resultTemplate(xPos+blockSize-1, yPos:yPos+blockSize-1, 1) = 255; resultTemplate(xPos+blockSize-1, yPos:yPos+blockSize-1, 2) = 0; resultTemplate(xPos+blockSize-1, yPos:yPos+blockSize-1, 3) = 0;
-			resultTemplate(xPos:xPos+blockSize-1, yPos, 1) = 255; resultTemplate(xPos:xPos+blockSize-1, yPos, 2) = 0; resultTemplate(xPos:xPos+blockSize-1, yPos, 3) = 0;
-			resultTemplate(xPos:xPos+blockSize-1, yPos+blockSize-1, 1) = 255; resultTemplate(xPos:xPos+blockSize-1, yPos+blockSize-1, 2) = 0; resultTemplate(xPos:xPos+blockSize-1, yPos+blockSize-1, 3) = 0;
-		else
-			resultTemplate(xPos, yPos:yPos+blockSize-1) = 255;
-			resultTemplate(xPos+blockSize-1, yPos:yPos+blockSize-1) = 255;
-			resultTemplate(xPos:xPos+blockSize-1, yPos) = 255;
-			resultTemplate(xPos:xPos+blockSize-1, yPos+blockSize-1) = 255;
-		end
+		resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray);
     end
 
     % 	Draw blocks on target image
 	for b = 1:size(labels, 1)
 		xPos = blockList(b,1) + labels(b,1);
 		yPos = blockList(b,2) + labels(b,2);
-		if gray == 0 % rgb image
-			resultTarget(xPos, yPos:yPos+blockSize-1, 1) = 255; resultTarget(xPos, yPos:yPos+blockSize-1, 2) = 0; resultTarget(xPos, yPos:yPos+blockSize-1, 3) = 0;
-			resultTarget(xPos+blockSize-1, yPos:yPos+blockSize-1, 1) = 255; resultTarget(xPos+blockSize-1, yPos:yPos+blockSize-1, 2) = 0; resultTarget(xPos+blockSize-1, yPos:yPos+blockSize-1, 3) = 0;
-			resultTarget(xPos:xPos+blockSize-1, yPos, 1) = 255; resultTarget(xPos:xPos+blockSize-1, yPos, 2) = 0; resultTarget(xPos:xPos+blockSize-1, yPos, 3) = 0;
-			resultTarget(xPos:xPos+blockSize-1, yPos+blockSize-1, 1) = 255; resultTarget(xPos:xPos+blockSize-1, yPos+blockSize-1, 2) = 0; resultTarget(xPos:xPos+blockSize-1, yPos+blockSize-1, 3) = 0;
-		else
-			resultTarget(xPos, yPos:yPos+blockSize-1) = 255;
-			resultTarget(xPos+blockSize-1, yPos:yPos+blockSize-1) = 255;
-			resultTarget(xPos:xPos+blockSize-1, yPos) = 255;
-			resultTarget(xPos:xPos+blockSize-1, yPos+blockSize-1) = 255;
-		end
+		resultTarget = drawBlock(resultTarget, [xPos yPos], gray);
 	end
 
 	% Show the result
 	subplot(2,1,1);
 	imshow(resultTemplate);
 	subplot(2,1,2);
-    save resultTarget
 	imshow(resultTarget);
 end

@@ -19,10 +19,10 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 
 	% We maintain four lists accounting for the boundary blocks index in blockList
 	% for template
-	topTemplateList = zeros(0);
-	bottomTemplateList = zeros(0);
-	leftTemplateList = zeros(0);
-	rightTemplateList = zeros(0);
+	topTemplateList = zeros(0,3);
+	bottomTemplateList = zeros(0,3);
+	leftTemplateList = zeros(0,3);
+	rightTemplateList = zeros(0,3);
 
 	for b = 1:size(blockList,1)
 		xPos = blockList(b,1);
@@ -30,47 +30,23 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 		if findInBlockList(blockList, [xPos-blockSize+1 yPos]) == 0 
 		% there is no block which is above current block
 		% meaning that current block is the topest block in this column
-			topTemplateList = [topTemplateList; b];
-			if gray == 0
-				resultTemplate(xPos:xPos+blockSize-1, yPos, 1) = 255; 
-				resultTemplate(xPos:xPos+blockSize-1, yPos, 2) = 0;
-				resultTemplate(xPos:xPos+blockSize-1, yPos, 3) = 0;
-			elseif gray == 1
-				resultTemplate(xPos:xPos+blockSize-1, yPos) = 255;
-			end	  
+			topTemplateList = [topTemplateList; [b xPos yPos];
+			resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray);	  
 		end
 
 		if findInBlockList(blockList, [xPos+blockSize-1 yPos]) == 0
-			bottomTemplateList = [bottomTemplateList; b];
-			if gray == 0
-				resultTemplate(xPos:xPos+blockSize-1, yPos+blockSize-1, 1) = 255;
-				resultTemplate(xPos:xPos+blockSize-1, yPos+blockSize-1, 2) = 0;
-				resultTemplate(xPos:xPos+blockSize-1, yPos+blockSize-1, 3) = 0;
-			elseif gray == 1
-				resultTemplate(xPos:xPos+blockSize-1, yPos+blockSize-1) = 255;
-			end
+			bottomTemplateList = [bottomTemplateList; [b xPos yPos]];
+			resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray);
 		end
 
 		if findInBlockList(blockList, [xPos yPos-blockSize+1]) == 0
-			leftTemplateList = [leftTemplateList; b];
-			if gray == 0
-				resultTemplate(xPos, yPos:yPos+blockSize-1, 1) = 255;
-				resultTemplate(xPos, yPos:yPos+blockSize-1, 2) = 0;
-				resultTemplate(xPos, yPos:yPos+blockSize-1, 3) = 0;
-			elseif gray == 1
-				resultTemplate(xPos, yPos:yPos+blockSize-1) = 255;
-			end
+			leftTemplateList = [leftTemplateList; [b xPos yPos]];
+			resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray);
 		end
 
 		if findInBlockList(blockList, [xPos yPos+blockSize-1]) == 0
-			rightTemplateList = [rightTemplateList; b];
-			if gray == 0
-				resultTemplate(xPos+blockSize-1, yPos:yPos+blockSize-1, 1) = 255;
-				resultTemplate(xPos+blockSize-1, yPos:yPos+blockSize-1, 2) = 0;
-				resultTemplate(xPos+blockSize-1, yPos:yPos+blockSize-1, 3) = 0;
-			elseif gray == 1
-				resultTemplate(xPos+blockSize-1, yPos:yPos+blockSize-1) = 255;
-			end
+			rightTemplateList = [rightTemplateList; [b xPos yPos]];
+			resultTemplate = drawBlock(resultTemplate, blockList(b,:), gray);
 		end
 	end
 
@@ -79,54 +55,63 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 	% So we need to add some boundary lines between them
 	% Since we have got the boundary blocks, we just use them in target image
 
+	% We need to sort the four lists according to some column to find the neighbour block
+	% in the boundary, which will be used to draw lines
+
+	topTemplateList = sortBlock(topTemplateList, 'row');
+	bottomTemplateList = sortBlock(bottomTemplateList, 'row');
+	leftTemplateList = sortBlock(leftTemplateList, 'col');
+	rightTemplateList = sortBlock(rightTemplateList, 'col');
+
 	% Top boundary
-	for t = 1:size(topTemplateList)
-		xPos = labels(topTemplateList(t),1);
-		yPos = labels(topTemplateList(t),2);
-		if gray == 0
-			resultTarget(xPos:xPos+blockSize-1, yPos, 1) = 255; 
-			resultTarget(xPos:xPos+blockSize-1, yPos, 2) = 0;
-			resultTarget(xPos:xPos+blockSize-1, yPos, 3) = 0;
-		elseif gray == 1
-			resultTarget(xPos:xPos+blockSize-1, yPos) = 255;
+	for t = 1:size(topTemplateList,1)
+		xPos = topTemplateList(t,2) + labels(topTemplateList(t,1),1);
+		yPos = topTemplateList(t,3) + labels(topTemplateList(t,1),2);
+		resultTarget = drawBlock(resultTarget, [xPos yPos], gray);
+		if t < size(topTemplateList,1)
+			pPos = topTemplateList(t+1,2) + labels(topTemplateList(t+1,1),1);
+			qPos = topTemplateList(t+1,3) + labels(topTemplateList(t+1,1),2);
+			resultTarget = drawLines(resultTarget, [xPos yPos], [pPos qPos], gray);
 		end
 	end
 
-	for b = 1:size(bottomTemplateList)
-		xPos = labels(bottomTemplateList(b),1);
-		yPos = labels(bottomTemplateList(b),2);
-		if gray == 0
-			resultTarget(xPos:xPos+blockSize-1, yPos+blockSize-1, 1) = 255;
-			resultTarget(xPos:xPos+blockSize-1, yPos+blockSize-1, 2) = 0;
-			resultTarget(xPos:xPos+blockSize-1, yPos+blockSize-1, 3) = 0;
-		elseif gray == 1
-			resultTarget(xPos:xPos+blockSize-1, yPos+blockSize-1) = 255;
+	% Bottom boundary
+	for b = 1:size(bottomTemplateList,1)
+		xPos = bottomTemplateList(b,2) + labels(bottomTemplateList(b,1),1);
+		yPos = bottomTemplateList(b,3) + labels(bottomTemplateList(b,1),2);
+		resultTarget = drawBlock(resultTarget, [xPos yPos], gray);
+		if b < size(bottomTemplateList,1)
+			pPos = bottomTemplateList(b+1,2) + labels(bottomTemplateList(b+1,1),1);
+			qPos = bottomTemplateList(b+1,3) + labels(bottomTemplateList(b+1,1),2);
+			resultTarget = drawLines(resultTarget, [xPos yPos], [pPos qPos], gray);
 		end
 	end
 
-	for l = 1:size(leftTemplateList)
-		xPos = labels(leftTemplateList(l),1);
-		yPos = labels(leftTemplateList(l),2);
-		if gray == 0
-			resultTarget(xPos, yPos:yPos+blockSize-1, 1) = 255;
-			resultTarget(xPos, yPos:yPos+blockSize-1, 2) = 0;
-			resultTarget(xPos, yPos:yPos+blockSize-1, 3) = 0;
-		elseif gray == 1
-			resultTarget(xPos, yPos:yPos+blockSize-1) = 255;
+	% Left boundary
+	for l = 1:size(leftTemplateList,1)
+		xPos = leftTemplateList(l,2) + labels(leftTemplateList(l,1),1);
+		yPos = leftTemplateList(l,3) + labels(leftTemplateList(l,1),2);
+		resultTarget = drawBlock(resultTarget, [xPos yPos], gray);
+		if l < size(leftTemplateList,1)
+			pPos = leftTemplateList(l+1,2) + labels(leftTemplateList(l+1,1),1);
+			qPos = leftTemplateList(l+1,3) + labels(leftTemplateList(l+1,1),2);
+			resultTarget = drawLines(resultTarget, [xPos yPos], [pPos qPos], gray);
 		end
 	end
 
-	for r = 1:size(rightTemplateList)
-		xPos = labels(rightTemplateList(r),1);
-		yPos = labels(rightTemplateList(r),2);
-		if gray == 0
-			resultTarget(xPos+blockSize-1, yPos:yPos+blockSize-1, 1) = 255;
-			resultTarget(xPos+blockSize-1, yPos:yPos+blockSize-1, 2) = 0;
-			resultTarget(xPos+blockSize-1, yPos:yPos+blockSize-1, 3) = 0;
-		elseif gray == 1
-			resultTarget(xPos+blockSize-1, yPos:yPos+blockSize-1) = 255;
+	% right boundary
+	for r = 1:size(rightTemplateList,1)
+		xPos = rightTemplateList(r,2) + labels(rightTemplateList(r,1),1);
+		yPos = rightTemplateList(r,3) + labels(rightTemplateList(r,1),2);
+		resultTarget = drawBlock(resultTarget, [xPos yPos], gray);
+		if r < size(rightTemplateList,1)
+			pPos = rightTemplateList(r+1,2) + labels(rightTemplateList(r+1,1),1);
+			qPos = rightTemplateList(r+1,3) + labels(rightTemplateList(r+1,1),2);
+			resultTarget = drawLines(resultTarget, [xPos yPos], [pPos qPos], gray);
 		end
 	end
+
+	% We also need to draw lines for target image because boundary blocks maybe moved apart
 	% Show the result boundary
 	subplot(1,2,1);
 	imshow(resultTemplate);

@@ -42,8 +42,8 @@ option = 2;
 	end
 
 	% draw the result
-	drawResult(originTemplateImage, originTarget1, blockList, labels, blockSize);
+	[resultTemplate resultTarget] = drawResult(originTemplateImage, originTarget1, blockList, labels, blockSize);
     t2= clock;
     etime(t2,t1);
 
-    %end
+%end
