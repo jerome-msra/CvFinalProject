@@ -51,6 +51,7 @@ elseif option ==1
 end
 
 t2= clock;
-etime(t2,t1);
+disp('face2');
+etime(t2,t1)
 
 %end
