@@ -1,4 +1,4 @@
-function [resultTemplate resultTarget] = drawResultBoundary(template, target, blockList, labels, blockSize)
+function [resultTemplate resultTarget] = drawResultBoundary(template, target, blockList, labels, blockSize, threshold)
 	% This function is used to show the deformation result
 	% draw the template region and target region on template image and target image
 	% Just draw the BOUNDARY 
@@ -6,6 +6,7 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 	% 		 target - target image
 	% 		 blockList - the block information on template image
 	% 		 labels - the translation information on the target image
+	% 		 threshold - used to judge the neighbour block on the boundary
 	% If template and target are grayscale
 	% we guarantee that they are both rgb or both gray
 	if size(template, 3) == 3
@@ -13,6 +14,7 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 	else
 		gray = 1;
 	end
+	
 
 	resultTemplate = template;
 	resultTarget = target;
@@ -72,7 +74,9 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 		if t < size(topTemplateList,1)
 			pPos = topTemplateList(t+1,2) + labels(topTemplateList(t+1,1),1);
 			qPos = topTemplateList(t+1,3) + labels(topTemplateList(t+1,1),2);
-			resultTarget = drawLines(resultTarget, [xPos yPos], [pPos qPos], gray);
+			if blockDistance([xPos yPos], [pPos qPos]) < threshold
+				resultTarget = drawLines(resultTarget, [xPos yPos], [pPos qPos], gray);
+			end
 		end
 	end
 
@@ -84,7 +88,9 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 		if b < size(bottomTemplateList,1)
 			pPos = bottomTemplateList(b+1,2) + labels(bottomTemplateList(b+1,1),1);
 			qPos = bottomTemplateList(b+1,3) + labels(bottomTemplateList(b+1,1),2);
-			resultTarget = drawLines(resultTarget, [xPos yPos], [pPos qPos], gray);
+			if blockDistance([xPos yPos], [pPos qPos]) < threshold
+				resultTarget = drawLines(resultTarget, [xPos yPos], [pPos qPos], gray);
+			end
 		end
 	end
 
@@ -96,7 +102,9 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 		if l < size(leftTemplateList,1)
 			pPos = leftTemplateList(l+1,2) + labels(leftTemplateList(l+1,1),1);
 			qPos = leftTemplateList(l+1,3) + labels(leftTemplateList(l+1,1),2);
-			resultTarget = drawLines(resultTarget, [xPos yPos], [pPos qPos], gray);
+			if blockDistance([xPos yPos], [pPos qPos]) < threshold
+				resultTarget = drawLines(resultTarget, [xPos yPos], [pPos qPos], gray);
+			end
 		end
 	end
 
@@ -108,7 +116,9 @@ function [resultTemplate resultTarget] = drawResultBoundary(template, target, bl
 		if r < size(rightTemplateList,1)
 			pPos = rightTemplateList(r+1,2) + labels(rightTemplateList(r+1,1),1);
 			qPos = rightTemplateList(r+1,3) + labels(rightTemplateList(r+1,1),2);
-			resultTarget = drawLines(resultTarget, [xPos yPos], [pPos qPos], gray);
+			if blockDistance([xPos yPos], [pPos qPos]) < threshold
+				resultTarget = drawLines(resultTarget, [xPos yPos], [pPos qPos], gray);
+			end
 		end
 	end
 

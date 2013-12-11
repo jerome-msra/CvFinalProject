@@ -13,10 +13,10 @@ option = 2;
 % if option == 2, use rgb images
 
 % Read in Images and turn them into gray scale Images
-originTemplateImage = imread('../templateFace.jpg');		% Template Image
-originTarget1 = imread('../targetFace1.jpg');	% Target Images
-originTarget2 = imread('../targetFace2.jpg');
-originTarget3 = imread('../targetFace3.jpg');
+originTemplateImage = imread('../template.png');		% Template Image
+originTarget1 = imread('../target1.png');	% Target Images
+originTarget2 = imread('../target2.png');
+originTarget3 = imread('../target3.png');
 
 grayTemplateImage = rgb2gray(originTemplateImage);
 grayTarget1 = rgb2gray(originTarget1);
@@ -37,17 +37,17 @@ iterations = 4;
 % Get the labels through ICM optimization
 disp('ICM iterations...');
 if option == 2
-    labels = ICM(blockList, originTemplateImage, originTarget3, iterations, blockSize,option);
+    labels = ICM(blockList, originTemplateImage, originTarget1, iterations, blockSize,option);
 elseif option == 1
-    labels = ICM(blockList, grayTemplateImage, grayTarget3, iterations, blockSize,option);
+    labels = ICM(blockList, grayTemplateImage, grayTarget1, iterations, blockSize,option);
 end
 
 % draw the result
-threshold = 30;
+threshold = 18;
 if option ==2
-    [resultTemplate resultTarget] = drawResult(originTemplateImage, originTarget3, blockList, labels, blockSize, threshold);
+    [resultTemplate resultTarget] = drawResultBoundary(originTemplateImage, originTarget1, blockList, labels, blockSize, threshold);
 elseif option ==1
-    [resultTemplate resultTarget] = drawResult(grayTemplateImage, grayTarget3, blockList, labels, blockSize, threshold);
+    [resultTemplate resultTarget] = drawResultBoundary(grayTemplateImage, grayTarget1, blockList, labels, blockSize, threshold);
 end
 
 t2= clock;
