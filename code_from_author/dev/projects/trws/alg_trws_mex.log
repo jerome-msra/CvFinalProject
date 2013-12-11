@@ -1,0 +1,62 @@
+ This is mex, Copyright 1984-2007 The MathWorks, Inc.
+
+-> Options file specified on command line
+----------------------------------------------------------------
+->    Options file           = msvc80opts.bat
+      MATLAB                 = C:\PROGRA~1\MATLAB\R2008a
+->    COMPILER               = cl
+->    Compiler flags:
+         COMPFLAGS           = /c /Zp8 /GR /W3 /EHsc- /Zc:wchar_t- /wd4996 /DMATLAB_MEX_FILE /D "WIN32" /nologo
+         OPTIMFLAGS          = /MD /O2 /Oy- /DNDEBUG
+         DEBUGFLAGS          = /MD /Zi /Fd"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.pdb"
+         arguments           =  -I../../code
+         Name switch         = /Fo
+->    Pre-linking commands   = 
+->    LINKER                 = link
+->    Link directives:
+         LINKFLAGS           = /dll /export:mexFunction /MAP /LIBPATH:"C:\PROGRA~1\MATLAB\R2008a\extern\lib\win32\microsoft" libmx.lib libmex.lib libmat.lib /implib:D:\usr\shekhovt\win\temp\mex_eyfpSN\templib.x /MACHINE:X86 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
+         LINKDEBUGFLAGS      = /DEBUG /PDB:"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.pdb"
+         LINKFLAGSPOST       = 
+         Name directive      = /out:"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32"
+         File link directive = 
+         Lib. link directive = 
+         Rsp file indicator  = @
+->    Resource Compiler      = rc /fo "..\..\matlab\minsum\alg_trws\mexversion.res"
+->    Resource Linker        = 
+----------------------------------------------------------------
+
+
+--> cl  -I../../code /c /Zp8 /GR /W3 /EHsc- /Zc:wchar_t- /wd4996 /DMATLAB_MEX_FILE /D "WIN32" /nologo /FoD:\usr\shekhovt\win\temp\mex_eyfpSN\alg_trws_mex.obj -IC:\PROGRA~1\MATLAB\R2008a\extern\include /MD /Zi /Fd"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.pdb" /MD /O2 /Oy- /DNDEBUG -DMX_COMPAT_32 H:\dev\projects\trws\alg_trws_mex.cpp
+
+alg_trws_mex.cpp
+
+--> cl  -I../../code /c /Zp8 /GR /W3 /EHsc- /Zc:wchar_t- /wd4996 /DMATLAB_MEX_FILE /D "WIN32" /nologo /FoD:\usr\shekhovt\win\temp\mex_eyfpSN\mexargs.obj -IC:\PROGRA~1\MATLAB\R2008a\extern\include /MD /Zi /Fd"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.pdb" /MD /O2 /Oy- /DNDEBUG -DMX_COMPAT_32 H:\dev\code\mex\mexargs.cpp
+
+mexargs.cpp
+    Contents of D:\usr\shekhovt\win\temp\mex_eyfpSN\mex_tmp.rsp:
+  D:\usr\shekhovt\win\temp\mex_eyfpSN\alg_trws_mex.obj  D:\usr\shekhovt\win\temp\mex_eyfpSN\mexargs.obj
+
+
+--> link /out:"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32" /DEBUG /PDB:"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.pdb" /dll /export:mexFunction /MAP /LIBPATH:"C:\PROGRA~1\MATLAB\R2008a\extern\lib\win32\microsoft" libmx.lib libmex.lib libmat.lib /implib:D:\usr\shekhovt\win\temp\mex_eyfpSN\templib.x /MACHINE:X86 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib   @D:\usr\shekhovt\win\temp\mex_eyfpSN\mex_tmp.rsp  ..\..\lib\maxplus.lib ..\..\lib\exttype.lib 
+
+Microsoft (R) Incremental Linker Version 8.00.50727.42
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+D:\usr\shekhovt\win\temp\mex_eyfpSN\alg_trws_mex.obj D:\usr\shekhovt\win\temp\mex_eyfpSN\mexargs.obj 
+LINK : ..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32 not found or not built by the last incremental link; performing full link
+   Creating library D:\usr\shekhovt\win\temp\mex_eyfpSN\templib.x and object D:\usr\shekhovt\win\temp\mex_eyfpSN\templib.exp
+
+--> del "..\..\matlab\minsum\alg_trws\alg_trws_mex.map"
+
+
+--> del D:\usr\shekhovt\win\temp\mex_eyfpSN\templib.x
+
+
+--> mt -outputresource:"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32";2 -manifest "..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.manifest"
+
+Microsoft (R) Manifest Tool version 5.2.3790.2014
+Copyright (c) Microsoft Corporation 2005. 
+All rights reserved.
+
+--> del "..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.manifest"
+

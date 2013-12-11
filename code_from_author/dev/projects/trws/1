@@ -1,0 +1,53 @@
+----------------------------------------------------------------
+-> options file specified on command line:
+   FILE = mexopts1.sh
+----------------------------------------------------------------
+->    MATLAB                = /usr/local/matlab76
+->    CC                    = g++-3.3.6
+->    CC flags:
+         CFLAGS             = -fPIC -ansi -D_GNU_SOURCE -pthread -fexceptions -m32 -DMX_COMPAT_32
+         CDEBUGFLAGS        = -g
+         COPTIMFLAGS        = -O -DNDEBUG
+         CLIBS              = -Wl,-rpath-link,/usr/local/matlab76/bin/glnx86 -L/usr/local/matlab76/bin/glnx86 -lmx -lmex -lmat -lm -lm -lstdc++
+         arguments          =  -DV5_COMPAT -DMX_COMPAT_32
+->    CXX                   = g++-3.3.6
+->    CXX flags:
+         CXXFLAGS           = -fPIC -ansi -D_GNU_SOURCE -pthread 
+         CXXDEBUGFLAGS      = -g
+         CXXOPTIMFLAGS      = -O -DNDEBUG
+         CXXLIBS            = -Wl,-rpath-link,/usr/local/matlab76/bin/glnx86 -L/usr/local/matlab76/bin/glnx86 -lmx -lmex -lmat -lm -lm
+         arguments          =  -DV5_COMPAT -DMX_COMPAT_32
+->    FC                    = g77
+->    FC flags:
+         FFLAGS             = -fPIC -fexceptions
+         FDEBUGFLAGS        = -g
+         FOPTIMFLAGS        = -O
+         FLIBS              = -Wl,-rpath-link,/usr/local/matlab76/bin/glnx86 -L/usr/local/matlab76/bin/glnx86 -lmx -lmex -lmat -lm -lm -lstdc++
+         arguments          =  -DMX_COMPAT_32
+->    LD                    = g++-3.3.6
+->    Link flags:
+         LDFLAGS            = -pthread -shared -m32 -Wl,--version-script,/usr/local/matlab76/extern/lib/glnx86/mexFunction.map
+         LDDEBUGFLAGS       = -g
+         LDOPTIMFLAGS       = -O
+         LDEXTENSION        = .mexglx
+         arguments          =  -L../../lib -lexttype -lmaxplus
+->    LDCXX                 = 
+->    Link flags:
+         LDCXXFLAGS         = 
+         LDCXXDEBUGFLAGS    = 
+         LDCXXOPTIMFLAGS    = 
+         LDCXXEXTENSION     = 
+         arguments          =  -L../../lib -lexttype -lmaxplus
+----------------------------------------------------------------
+
+
+Warning: You are using gcc version "3.3.6".  The earliest gcc version supported
+         with mex is "4.0.0".  The latest version tested for use with mex is "4.2.0".
+         To download a different version of gcc, visit http://gcc.gnu.org 
+
+-> g++-3.3.6 -c  -I../../code -I/usr/local/matlab76/extern/include -DMATLAB_MEX_FILE -fPIC -ansi -D_GNU_SOURCE -pthread   -DV5_COMPAT -DMX_COMPAT_32 -g  "dummy.cpp" -o ../../matlab/minsum/alg_trws/dummy.o
+
+-> g++-3.3.6 -c  -I../../code -I/usr/local/matlab76/extern/include -DMATLAB_MEX_FILE -fPIC -ansi -D_GNU_SOURCE -pthread -fexceptions -m32 -DMX_COMPAT_32  -DV5_COMPAT -DMX_COMPAT_32 -g  "/usr/local/matlab76/extern/src/mexversion.c" -o ../../matlab/minsum/alg_trws/mexversion.o
+
+-> g++-3.3.6 -g -pthread -shared -m32 -Wl,--version-script,/usr/local/matlab76/extern/lib/glnx86/mexFunction.map -o  "../../matlab/minsum/alg_trws/alg_trws_mex.mexglx"  ../../matlab/minsum/alg_trws/dummy.o  "../../o32/trws_mex/mexargs.o"  "../../o32/trws_mex/alg_trws_mex.o" ../../matlab/minsum/alg_trws/mexversion.o  -L../../lib -lexttype -lmaxplus -Wl,-rpath-link,/usr/local/matlab76/bin/glnx86 -L/usr/local/matlab76/bin/glnx86 -lmx -lmex -lmat -lm -lm
+
