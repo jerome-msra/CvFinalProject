@@ -1,0 +1,32 @@
+\documentclass[11pt]{article}
+
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+\renewcommand{\baselinestretch}{1.2}
+\setlength{\topmargin}{-0.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\textheight}{9.1in}
+
+\fancyhfoffset{0in}
+
+\newlength{\pagewidth}
+\setlength{\pagewidth}{6.5in}
+\pagestyle{empty}
+
+\def\pp{\par\noindent}
+
+\special{papersize=8.5in,11in}
+
+\author{Junwei Jason Zhang 108152847}
+\title{Homework 7: Mid-term}
+\begin{document}
+\maketitle
+
+\section{}
+\vskip0.5em\noindent{\sc{}}
