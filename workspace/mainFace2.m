@@ -45,9 +45,9 @@ end
 % draw the result
 threshold = 30;
 if option ==2
-    [resultTemplate resultTarget] = drawResult(originTemplateImage, originTarget2, blockList, labels, blockSize, threshold);
+    [resultTemplate resultTarget] = drawResultBoundary(originTemplateImage, originTarget2, blockList, labels, blockSize, threshold);
 elseif option ==1
-    [resultTemplate resultTarget] = drawResult(grayTemplateImage, grayTarget2, blockList, labels, blockSize, threshold);
+    [resultTemplate resultTarget] = drawResultBoundary(grayTemplateImage, grayTarget2, blockList, labels, blockSize, threshold);
 end
 
 t2= clock;
