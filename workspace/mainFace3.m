@@ -52,6 +52,6 @@ end
 
 t2= clock;
 disp('mainface3');
-etime(t2,t1);
+saveetime(t2,t1);
 
 %end
