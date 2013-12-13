@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{besag1986}
+Julian Besag.
+\newblock On the statistical analysis of dirty pictures.
+\newblock {\em Journal of the Royal Statistical Society. Series B
+  (Methodological)}, 48(3):pp. 259--302, 1986.
+
+\bibitem{kovtun2004image}
+I~Kovtun.
+\newblock {\em Image segmentation based on sufficient conditions of optimality
+  in NP-complete classes of structural labelling problem}.
+\newblock PhD thesis, PhD thesis, IRTC ITS National Academy of Sciences,
+  Ukraine, 2004.(In Ukranian), 2004.
+
+\bibitem{shekhovtsov2008efficient}
+Alexander Shekhovtsov, Ivan Kovtun, and V{\'a}clav Hlav{\'a}{\v{c}}.
+\newblock Efficient mrf deformation model for non-rigid image matching.
+\newblock {\em Computer Vision and Image Understanding}, 112(1):91--99, 2008.
+
+\end{thebibliography}
