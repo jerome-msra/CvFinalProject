@@ -1,0 +1,72 @@
+% Report for CSE 548 Computer Vision Final Project at SUNY-Stony Brook
+% Using NIPS 2013 template
+% Efficient MRF Deformation Model for Non-Rigid Image Matching
+% Junwei Jason Zhang, Jian Jiang
+% Dept. of Computer Science, SUNY-SB
+
+\documentclass{article} % For LaTeX2e
+\usepackage{nips13submit_e,times}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{metalogo}
+\usepackage{url}
+
+\title{Efficient MRF Deformation Model for Non-Rigid Image Matching}
+
+\bibliographystyle{plain}
+
+\author{
+Junwei Jason Zhang\\
+Department of Computer Science\\
+State University of New York at Stony Brook\\
+Stony Brook, NY 11790 \\
+\texttt{junweizhang23@gmail.com} \\
+\And
+Jian Jiang \\
+Department of Computer Science \\
+State University of New York at Stony Brook \\
+Stony Brook, NY 11790 \\
+\texttt{jianjiang@cs.stonybrook.edu} \\
+}
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+\nipsfinalcopy % Uncomment for camera-ready version
+
+\begin{document}
+
+
+\maketitle
+
+\begin{abstract}
+The motivation of this project comes from the registration of 3D faces. Using Discrete Ricci Flow and conformal mapping, we can map a 3D face onto a 2D image. Registration work is done on this 2D image. Our project focuses on the second step. We use MRF energy to represent the matching problem and minimize the energy to achieve our goal. This work has been specified in \cite{shekhovtsov2008efficient}.
+\end{abstract}
+
+\section{Introduction}
+
+Face registration is always widely used in many areas. In medical field, cosmetology demands accurate registration between face models of the same person to see the change as time. And this market worths billions of dollars in United States. \\
+According Prof. Xianfeng David Gu's previous work, a face 3D model could be mapped onto a 2D image using conformal mapping. Based on this work, we focus on the image registration using Markov Random Field(MRF). We define a MRF energy function and try to minimize it to get the deformation, which transforms an image to another. As for the optimisation method, we use both Iterative Conditional Modes(ICM) and TRW-S, and compare the results of them. \\
+We will introduce the algorithm in Section 2, and present the result in Section 3. Future work will be found in Section 4.
+\section{MRF Energy Function}
+\label{MRF}
+\subsection{Define Energy Functioin}
+Since we use MRF to register two images, we need to define the MRF energy function.
+\subsection{Improvements}
+\section{Minimize Energy Function}
+\subsection{Iterated Conditional Modes (ICM)}
+\subsubsection{ICM Pipeline}
+
+\subsubsection{Result}
+
+\subsection{TRW-S}
+\subsubsection{TRW-S Pipeline}
+\subsubsection{Result}
+
+\section{Summary and Future Work}
+
+\phantomsection
+\bibliography{tex}
+
+\end{document}

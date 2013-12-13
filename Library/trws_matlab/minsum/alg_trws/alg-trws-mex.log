@@ -1,0 +1,62 @@
+ This is mex, Copyright 1984-2005 The MathWorks, Inc.
+
+-> Options file specified on command line
+----------------------------------------------------------------
+->    Options file           = msvc80opts.bat
+      MATLAB                 = C:\PROGRA~1\MATLAB
+->    COMPILER               = cl
+->    Compiler flags:
+         COMPFLAGS           = /c /Zp8 /GR /W3 /EHsc- /Zc:wchar_t- /wd4996 /DMATLAB_MEX_FILE /nologo
+         OPTIMFLAGS          = /MD /O2 /Oy- /DNDEBUG
+         DEBUGFLAGS          = /MD /Zi /Fd"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.pdb"
+         arguments           =  -I../../_root/v2
+         Name switch         = /Fo
+->    Pre-linking commands   = 
+->    LINKER                 = link
+->    Link directives:
+         LINKFLAGS           = /dll /export:mexFunction /MAP /LIBPATH:"C:\PROGRA~1\MATLAB\extern\lib\win32\microsoft" libmx.lib libmex.lib libmat.lib /implib:D:\temp\mex_37068270-8F1C-4DB5-B3B4-842A4B8EC7AE\templib.x /MACHINE:X86 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
+         LINKDEBUGFLAGS      = /DEBUG /PDB:"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.pdb"
+         LINKFLAGSPOST       = 
+         Name directive      = /out:"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32"
+         File link directive = 
+         Lib. link directive = 
+         Rsp file indicator  = @
+->    Resource Compiler      = rc /fo "..\..\matlab\minsum\alg_trws\mexversion.res"
+->    Resource Linker        = 
+----------------------------------------------------------------
+
+
+--> "cl  -I../../_root/v2 /c /Zp8 /GR /W3 /EHsc- /Zc:wchar_t- /wd4996 /DMATLAB_MEX_FILE /nologo /FoD:\temp\mex_37068270-8F1C-4DB5-B3B4-842A4B8EC7AE\alg-trws-mex.obj -IC:\PROGRA~1\MATLAB\extern\include -IC:\PROGRA~1\MATLAB\simulink\include /MD /Zi /Fd"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.pdb" /MD /O2 /Oy- /DNDEBUG -DMX_COMPAT_32 alg-trws-mex.cpp"
+
+alg-trws-mex.cpp
+
+--> "cl  -I../../_root/v2 /c /Zp8 /GR /W3 /EHsc- /Zc:wchar_t- /wd4996 /DMATLAB_MEX_FILE /nologo /FoD:\temp\mex_37068270-8F1C-4DB5-B3B4-842A4B8EC7AE\mexargs.obj -IC:\PROGRA~1\MATLAB\extern\include -IC:\PROGRA~1\MATLAB\simulink\include /MD /Zi /Fd"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.pdb" /MD /O2 /Oy- /DNDEBUG -DMX_COMPAT_32 ../../_root/v2/mex/mexargs.cpp"
+
+mexargs.cpp
+    Contents of D:\temp\mex_37068270-8F1C-4DB5-B3B4-842A4B8EC7AE\mex_tmp.rsp:
+  D:\temp\mex_37068270-8F1C-4DB5-B3B4-842A4B8EC7AE\alg-trws-mex.obj  D:\temp\mex_37068270-8F1C-4DB5-B3B4-842A4B8EC7AE\mexargs.obj
+
+
+--> "link /out:"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32" /DEBUG /PDB:"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.pdb" /dll /export:mexFunction /MAP /LIBPATH:"C:\PROGRA~1\MATLAB\extern\lib\win32\microsoft" libmx.lib libmex.lib libmat.lib /implib:D:\temp\mex_37068270-8F1C-4DB5-B3B4-842A4B8EC7AE\templib.x /MACHINE:X86 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib   @D:\temp\mex_37068270-8F1C-4DB5-B3B4-842A4B8EC7AE\mex_tmp.rsp  ..\..\lib\maxplus.lib ..\..\lib\exttype.lib "
+
+Microsoft (R) Incremental Linker Version 8.00.50727.42
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+D:\temp\mex_37068270-8F1C-4DB5-B3B4-842A4B8EC7AE\alg-trws-mex.obj D:\temp\mex_37068270-8F1C-4DB5-B3B4-842A4B8EC7AE\mexargs.obj 
+LINK : ..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32 not found or not built by the last incremental link; performing full link
+   Creating library D:\temp\mex_37068270-8F1C-4DB5-B3B4-842A4B8EC7AE\templib.x and object D:\temp\mex_37068270-8F1C-4DB5-B3B4-842A4B8EC7AE\templib.exp
+
+--> "del "..\..\matlab\minsum\alg_trws\alg_trws_mex.map""
+
+
+--> "del D:\temp\mex_37068270-8F1C-4DB5-B3B4-842A4B8EC7AE\templib.x"
+
+
+--> "mt -outputresource:"..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32";2 -manifest "..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.manifest""
+
+Microsoft (R) Manifest Tool version 5.2.3790.2014
+Copyright (c) Microsoft Corporation 2005. 
+All rights reserved.
+
+--> "del "..\..\matlab\minsum\alg_trws\alg_trws_mex.mexw32.manifest""
+
