@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <conio.h>
 #include "MRFEnergy.h"
+
 
 // Example: minimizing an energy function with Potts terms.
 // See type*.h files for other types of terms.
@@ -64,4 +66,6 @@ void testPotts()
 void main()
 {
 	testPotts();
+	int i=0;
+	getchar();
 }

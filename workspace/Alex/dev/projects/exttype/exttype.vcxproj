@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug-lib-mex|Win32">
+      <Configuration>Debug-lib-mex</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E81D3529-BD7A-4AA8-A868-33349102D1DD}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-lib-mex|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug-lib-mex|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../obj/$(ProjectName)/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../obj/$(ProjectName)/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug-lib-mex|Win32'">../../obj/$(ProjectName)/$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug-lib-mex|Win32'">../../obj/$(ProjectName)/$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug-lib-mex|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug-lib-mex|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug-lib-mex|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../code;../../code; d:/_users/_lib/loki-0.1.3/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/$(ProjectName)d.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>../../code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/$(ProjectName).lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-lib-mex|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../code;../../code/debug; d:/_users/_lib/loki-0.1.3/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_CONSOLE;_ADEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/$(ProjectName).lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\code\exttype\arrayn.h" />
+    <ClInclude Include="..\..\code\exttype\arrays.h" />
+    <ClInclude Include="..\..\code\exttype\convolution.h" />
+    <ClInclude Include="..\..\code\exttype\fixed_vect.h" />
+    <ClInclude Include="..\..\code\exttype\intn.h" />
+    <ClInclude Include="..\..\code\exttype\itern.h" />
+    <ClInclude Include="..\..\code\exttype\ivector.h" />
+    <ClInclude Include="..\..\code\exttype\minmax.h" />
+    <ClInclude Include="..\..\code\exttype\pvect.h" />
+    <ClInclude Include="..\..\code\geom\geom.h" />
+    <ClInclude Include="..\..\code\geom\imatrix.h" />
+    <ClInclude Include="..\..\code\geom\math.h" />
+    <ClInclude Include="..\..\code\geom\nmmatrix.h" />
+    <ClInclude Include="..\..\code\geom\vectn.h" />
+    <ClInclude Include="..\..\code\geom\Zn.h" />
+    <ClInclude Include="..\..\code\geom\transform\homography\homography.h" />
+    <ClInclude Include="..\..\code\geom\transform\homography\hvect.h" />
+    <ClInclude Include="..\..\code\geom\r2geometry\convexpoly.h" />
+    <ClInclude Include="..\..\code\geom\r2geometry\r2geometry.h" />
+    <ClInclude Include="..\..\code\geom\r2geometry\r2grid.h" />
+    <ClInclude Include="..\..\code\geom\r2geometry\vect2.h" />
+    <ClInclude Include="..\..\code\geom\p2geometry\hpoly.h" />
+    <ClInclude Include="..\..\code\geom\grid\grid.h" />
+    <ClInclude Include="..\..\code\geom\r1geometry\r1geometry.h" />
+    <ClInclude Include="..\..\code\geom\r3geometry\flatpoly.h" />
+    <ClInclude Include="..\..\code\geom\r3geometry\vect3.h" />
+    <ClInclude Include="..\..\code\data\dataset.h" />
+    <ClInclude Include="..\..\code\data\grid_topology.h" />
+    <ClInclude Include="..\..\code\data\indexset.h" />
+    <ClInclude Include="..\..\code\dynamic\array_allocator.h" />
+    <ClInclude Include="..\..\code\dynamic\block_allocator.h" />
+    <ClInclude Include="..\..\code\dynamic\buffer.h" />
+    <ClInclude Include="..\..\code\dynamic\fixed_array1.h" />
+    <ClInclude Include="..\..\code\dynamic\fixed_array2.h" />
+    <ClInclude Include="..\..\code\debug\except.h" />
+    <ClInclude Include="..\..\code\debug\logs.h" />
+    <ClInclude Include="..\..\code\debug\msvcdebug.h" />
+    <ClInclude Include="..\..\code\debug\performance.h" />
+    <ClInclude Include="..\..\code\streams\xstringstream.h" />
+    <ClInclude Include="..\..\code\files\xfs.h" />
+    <ClInclude Include="..\..\code\numeric\fixed_point.h" />
+    <ClInclude Include="..\..\code\exttype\grid_topology.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\code\exttype\pvect.cpp" />
+    <ClCompile Include="..\..\code\geom\math.cpp" />
+    <ClCompile Include="..\..\code\geom\vectn.cpp" />
+    <ClCompile Include="..\..\code\geom\transform\homography\homography.cpp" />
+    <ClCompile Include="..\..\code\geom\transform\homography\hvect.cpp" />
+    <ClCompile Include="..\..\code\geom\r2geometry\r2geometry.cpp" />
+    <ClCompile Include="..\..\code\geom\r2geometry\r2grid.cpp" />
+    <ClCompile Include="..\..\code\geom\r2geometry\vect2.cpp" />
+    <ClCompile Include="..\..\code\geom\grid\grid.cpp" />
+    <ClCompile Include="..\..\code\geom\r1geometry\r1geometry.cpp" />
+    <ClCompile Include="..\..\code\geom\r3geometry\vect3.cpp" />
+    <ClCompile Include="..\..\code\data\dataset.cpp" />
+    <ClCompile Include="..\..\code\dynamic\block_allocator.cpp" />
+    <ClCompile Include="..\..\code\debug\logs.cpp" />
+    <ClCompile Include="..\..\code\debug\msvcdebug.cpp" />
+    <ClCompile Include="..\..\code\debug\performance.cpp" />
+    <ClCompile Include="..\..\code\streams\xstringstream.cpp" />
+    <ClCompile Include="..\..\code\files\xfs.cpp" />
+    <ClCompile Include="..\..\code\numeric\fixed_point.cpp" />
+    <ClCompile Include="exttype-test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

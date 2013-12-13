@@ -1,0 +1,1 @@
+@call mexmkae.bat ../../code/optim/optical-flow/matching_cost_q_mex.cpp ../../matlab/registration_2008/deformmatch-v3/mex

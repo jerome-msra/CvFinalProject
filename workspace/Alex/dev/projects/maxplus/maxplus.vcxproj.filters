@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="graph">
+      <UniqueIdentifier>{cc50bd10-1db4-49a9-89ad-3f77f6a0bceb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="optim">
+      <UniqueIdentifier>{1451b1d0-5c87-406c-aecd-c2369a94bec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="optim\trws">
+      <UniqueIdentifier>{863c59ff-325c-4971-9a08-dc6245c20617}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="optim\optical-flow">
+      <UniqueIdentifier>{fa87f385-5a30-4268-bd9c-5faa4f27ea06}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\code\optim\graph\maxplus_graph.cpp">
+      <Filter>graph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\optim\graph\mgraph.cpp">
+      <Filter>graph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trws\alg_trws_mex.cpp">
+      <Filter>optim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\optim\trws\func.cpp">
+      <Filter>optim\trws</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\optim\trws\trws4.cpp">
+      <Filter>optim\trws</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\optim\optical-flow\deform_match.cpp">
+      <Filter>optim\optical-flow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\optim\optical-flow\deform_match_mex.cpp">
+      <Filter>optim\optical-flow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\code\optim\optical-flow\matching_cost_q_mex.cpp">
+      <Filter>optim\optical-flow</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\code\optim\graph\maxplus_graph.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\optim\graph\mgraph.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\optim\trws\func.h">
+      <Filter>optim\trws</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\optim\trws\trws4.h">
+      <Filter>optim\trws</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\optim\optical-flow\deform_match.h">
+      <Filter>optim\optical-flow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\optim\optical-flow\subdiv_it.h">
+      <Filter>optim\optical-flow</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
