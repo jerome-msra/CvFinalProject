@@ -57,11 +57,11 @@ We will introduce the algorithm in Section 2, and present the result in Section 
 \label{MRF}
 	\subsection{Define Energy Functioin}
 	Since we use MRF to register two images, we need to define the MRF energy function. \\
-	Let $L = \{1...K\}$ be a set of labels. Let $G = (V, E)$ be a graph with $E \subseteq V\times V$. Each graph node is assigned with a label $x_s \in L$ and a labeling or configuration is defined as $\mathbf{x} = \{x_s|s\in V\}$. So the energy of a configuration $\mathbf{x}$ is defined as 
+	Let $L = \{1...K\}$ be a set of labels. Let $G = (V, E)$ be a graph with $E \subseteq V\times V$. Each graph node is assigned with a label $x_s \in L$ and a labeling or configuration is defined as $\mathbf{x} = \{x_s|s\in V\}$. So the energy of a configuration $\mathbf{x}$ is defined as
 	\begin{equation}
 		E(\mathbf{x}|\theta) = \sum_{s\in V}\theta_s(x_s) + \sum_{st\in E}\theta_{st}(x_s, x_t)
 	\end{equation}
-	where $\displaystyle{\{\theta_s(i)\in\mathbb{R} | i\in L, s\in V\}}$ is unary potentials and $\theta_s(x_s)$ is referred as the unary term. $\displaystyle{\{\theta_{st}(i,j)\in\mathbb{R} | i,j\in L, st\in E\}}$ is pairwise potentials and $\theta_{st}(x_s, x_t)$ is the pairwise term. The probablity distribution defined as 
+	where $\displaystyle{\{\theta_s(i)\in\mathbb{R} | i\in L, s\in V\}}$ is unary potentials and $\theta_s(x_s)$ is referred as the unary term. $\displaystyle{\{\theta_{st}(i,j)\in\mathbb{R} | i,j\in L, st\in E\}}$ is pairwise potentials and $\theta_{st}(x_s, x_t)$ is the pairwise term. The probablity distribution defined as
 	\begin{equation}
 		p(\mathbf{x}|\theta) \propto \exp(-E(\mathbf{x}|\theta))
 	\end{equation}
@@ -69,8 +69,8 @@ We will introduce the algorithm in Section 2, and present the result in Section 
 	\subsubsection{Deformation Definition} We first define the deformation between two images $I^1:T^1 \to [0,1]^3$ and $I^2:T^2\to[0,1]^3$ where $T^1, T^2$ are sets of pixels. We define the configuation $\mathbf{x}$ as components
 	\begin{equation}
 	 	x_s = (x_s^1, x_s^2),\ s\in T^1
-	\end{equation} 
-	representing a 2D displacement field over $T^1$. Coordinates $x_s^1$ and $x_s^2$ denote $x$ and $y$ displacements of pixel $s$, respectively, taking value from $L = \{K_{min},...,K_{max}\}$. So our deformation for some pixel $I_s$ is defined as 
+	\end{equation}
+	representing a 2D displacement field over $T^1$. Coordinates $x_s^1$ and $x_s^2$ denote $x$ and $y$ displacements of pixel $s$, respectively, taking value from $L = \{K_{min},...,K_{max}\}$. So our deformation for some pixel $I_s$ is defined as
 	\begin{equation}
 		D_{\mathbf{x}}(I_s) = I_{s+x_s}
 	\end{equation}
@@ -102,7 +102,7 @@ We will introduce the algorithm in Section 2, and present the result in Section 
 			\includegraphics[scale = 0.85]{block.png}
 			\caption{Block Model: (a) two neighboring blocks (b)-(d) examples which are not penalized}
 			\end{figure}
-			So we define the unary term as 
+			So we define the unary term as
 			\begin{equation}
 				\theta_s(x_s) = \frac{1}{2\sigma_I^2} d(I_s^1, I_{s+(x_{s^1}, x_{s^2})})
 			\end{equation}
@@ -120,6 +120,7 @@ We will introduce the algorithm in Section 2, and present the result in Section 
 	\subsection{ICM}
 	Iterative Conditional Modes(ICM)\cite{besag1986} is firstly used to minimize our MRF energy function by us because it can be implemented simply. We will introduce its pipeline and then show the result of this optimization method.
 		\subsubsection{ICM Pipeline}
+        
 			As for ICM, it traverses the whole label space for each graph nodes. First, we initialize the graph nodes with random labels, then the iteration begins. In each iteration, for every graph node, we try every possible label for it, checking if the energy is smaller than previous configuration. If yes, we update the node with this label. Because we update the labels for nodes only when the energy under current configuration is smaller than previous configuration, it's guaranteed to converge. The pipeline is shown in Algorithm 1.
 			\begin{algorithm}
 			\caption{Pipeline for ICM}
@@ -129,7 +130,7 @@ We will introduce the algorithm in Section 2, and present the result in Section 
 				\For{Node $i$ in all graph Nodes}
 					\For{Possible Labels for node $i$}
 						\If{(Energy is smaller than previous configuration)}
-							\State Label for node $i$ := label $j$ 
+							\State Label for node $i$ := label $j$
 						\EndIf
 					\EndFor
 				\EndFor
@@ -137,7 +138,35 @@ We will introduce the algorithm in Section 2, and present the result in Section 
 			\EndWhile
 			\end{algorithmic}
 			\end{algorithm}
-
+        \subsubsection{Define the distance of colors}
+        
+        \begin{itemize}
+        \item
+        For the color comparison we use 
+        $$F_{\lambda}(c_{1},c_{2}) = {\lambda}^{2} \times \frac{\langle c_{1}-c_{2}, c_{2} \rangle }{ {\left \| c_{2} \right \|}^{2} } + (c_{1}-  {\langle c_{1},c_{2} \rangle} \times \frac{c_{2}}{\left \| c_{2} \right \|}^{2}    )^{2}$$
+        \item
+        We represent color space as $[0,1]^{3}$ and compute color similarity using $F_{\lambda}$ with $\lambda = 0.1 $.\\
+        For $d(x,y)$, we use
+                $$\frac{1}{N} \begin{matrix} \sum_{k=1}^N  F_{\lambda}({x^{i},y^{i}})\end{matrix}$$ where $x^{i}, y^{i}$ are colors of pixels in correspondence. We set $\sigma_{I} = 1 $ and $c_{r} = 0.001$.
+                
+                
+          \end{itemize}      
+                
+        
+        \subsubsection{Speed up computation}
+        \begin{itemize}
+        \item
+        Using \textbf{rgb2ind} method to convert RGB space to 32 colors.
+        
+        \item
+        Using mix-compile to maintain a Java Hash Table, contains $(c_{1},c_{2},d(c_{1},c_{2}))$. In each computing, programming searches  Hash Table first. \\
+        If the table has the tuple$(c_{1},c_{2})$, the Hash Table returns the $d(c_{1},c_{2})$. \\
+        If not, the programming calculates the distance $d(c_{1},c_{2})$, depending on the definition and saves $(c_{1},c_{2},d(c_{1},c_{2}))$.
+                
+        \end{itemize}
+        
+        
+        
 		\subsubsection{Result}
 		We use the human face emotion change to show our result(Fig. 4).
 		\begin{figure}[!hb]
@@ -147,10 +176,23 @@ We will introduce the algorithm in Section 2, and present the result in Section 
 		\end{figure}
 		We only show the blocks on both template face and target face on the boundary because it will cover the whole face if all blocks are shown. We can see from the result that the deformation of human faces is modeled very well and accurate under the circumstance where the emotion doesn't change too much. Because we restrict that neighboring blocks can't move apart too much, we can model small deformation very well. And since ICM searches for the whold label space and only updates labels when MRF energy is smaller, it's guaranteed to converge.\\
 		However, ICM has some shortages. First, it runs very slow. In our experiment\footnote{Intel Core i7 2.7GHz, 8GB DDR3 RAM}, it takes about 30 minutes to compute the deformation for the image shown in Fig. 4, which has 335 blocks. In the future, it will much faster if we use parallel computing because we find that only a single core of CPU is utilized during the computation. Second, if may fall into local minimum.
+    
+    
 	\subsection{TRW-S}
-		\subsubsection{TRW-S Pipeline}
+		\subsubsection{TRW-S}
+        \paragraph 
+        The tree-reweighted message passing (TRW) techniques, which approach the solution to MRF-LP via a
+dual problem defined by a convex combination of trees.
+        \paragraph
+        Later, a sequential message passing scheme (known as TRW-S)
+was proposed. It updates messages in a sequential order instead of a parallel order used in TRW-E and TRW-T, which makes the lower bound will not decrease in TRW-S.
+        \paragraph
+        Regarding the convergence, TRW-S will attain a point that satisfies a condition referred to as weak tree agreement and the lower bound will not change any more since then.
+        \paragraph
+        Regarding the optimality, TRW-S cannot guarantee the global maximum of the lower bound in general. 
+        
 		\subsubsection{Result}
-
+        In this project, we respect the CVIU 2008's TRW-S code
 \section{Summary and Future Work}
 
 \phantomsection

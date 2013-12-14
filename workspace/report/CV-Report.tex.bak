@@ -1,32 +1,159 @@
-\documentclass[11pt]{article}
+% Report for CSE 548 Computer Vision Final Project at SUNY-Stony Brook
+% Using NIPS 2013 template
+% Efficient MRF Deformation Model for Non-Rigid Image Matching
+% Junwei Jason Zhang, Jian Jiang
+% Dept. of Computer Science, SUNY-SB
 
-\usepackage{algorithmic}
-\usepackage{amsmath}
-\usepackage{graphicx}
+\documentclass{article} % For LaTeX2e
+\usepackage{nips13submit_e,times}
 \usepackage{hyperref}
-\usepackage{fancyhdr}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{metalogo}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{url}
 
+\title{Non-Rigid Image Registration with MRF}
 
-\renewcommand{\baselinestretch}{1.2}
-\setlength{\topmargin}{-0.5in}
-\setlength{\textwidth}{6.5in}
-\setlength{\oddsidemargin}{0.0in}
-\setlength{\textheight}{9.1in}
+\bibliographystyle{plain}
 
-\fancyhfoffset{0in}
+\author{
+Junwei Jason Zhang\\
+Department of Computer Science\\
+State University of New York at Stony Brook\\
+Stony Brook, NY 11790 \\
+\texttt{junweizhang23@gmail.com} \\
+\And
+Jian Jiang \\
+Department of Computer Science \\
+State University of New York at Stony Brook \\
+Stony Brook, NY 11790 \\
+\texttt{jianjiang@cs.stonybrook.edu} \\
+}
 
-\newlength{\pagewidth}
-\setlength{\pagewidth}{6.5in}
-\pagestyle{empty}
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
 
-\def\pp{\par\noindent}
+\nipsfinalcopy % Uncomment for camera-ready version
 
-\special{papersize=8.5in,11in}
-
-\author{Junwei Jason Zhang 108152847}
-\title{Homework 7: Mid-term}
 \begin{document}
+
+
 \maketitle
 
-\section{}
-\vskip0.5em\noindent{\sc{}}
+\begin{abstract}
+The motivation of this project comes from the registration of 3D faces. Using Discrete Ricci Flow and conformal mapping, we can map a 3D face onto a 2D image. Registration work is done on this 2D image. Our project focuses on the second step. We use MRF energy to represent the matching problem and minimize the energy to achieve our goal. This work has been specified in \cite{shekhovtsov2008efficient}.
+\end{abstract}
+
+\section{Introduction}
+
+Face registration is always widely used in many areas. In medical field, cosmetology demands accurate registration between face models of the same person to see the change as time. And this market worths billions of dollars in United States. \\
+According Prof. Xianfeng David Gu's previous work, a face 3D model could be mapped onto a 2D image using conformal mapping. Based on this work, we focus on the image registration using Markov Random Field(MRF). We define a MRF energy function and try to minimize it to get the deformation, which transforms an image to another. As for the optimisation method, we use both Iterative Conditional Modes(ICM) and TRW-S, and compare the results of them. \\
+We will introduce the algorithm in Section 2, and present the result in Section 3. Future work will be found in Section 4.
+\section{MRF Energy Function}
+\label{MRF}
+	\subsection{Define Energy Functioin}
+	Since we use MRF to register two images, we need to define the MRF energy function. \\
+	Let $L = \{1...K\}$ be a set of labels. Let $G = (V, E)$ be a graph with $E \subseteq V\times V$. Each graph node is assigned with a label $x_s \in L$ and a labeling or configuration is defined as $\mathbf{x} = \{x_s|s\in V\}$. So the energy of a configuration $\mathbf{x}$ is defined as 
+	\begin{equation}
+		E(\mathbf{x}|\theta) = \sum_{s\in V}\theta_s(x_s) + \sum_{st\in E}\theta_{st}(x_s, x_t)
+	\end{equation}
+	where $\displaystyle{\{\theta_s(i)\in\mathbb{R} | i\in L, s\in V\}}$ is unary potentials and $\theta_s(x_s)$ is referred as the unary term. $\displaystyle{\{\theta_{st}(i,j)\in\mathbb{R} | i,j\in L, st\in E\}}$ is pairwise potentials and $\theta_{st}(x_s, x_t)$ is the pairwise term. The probablity distribution defined as 
+	\begin{equation}
+		p(\mathbf{x}|\theta) \propto \exp(-E(\mathbf{x}|\theta))
+	\end{equation}
+	is a Gibbs distribution corresponding to a certain Markov Random Field(MRF). Thus the problem of maximize a posteriori(MAP) configuration corresponds to the energy minimization $\displaystyle{\min_{\mathbf{x}}E(\mathbf{x}|\theta)}$. \\
+	\subsubsection{Deformation Definition} We first define the deformation between two images $I^1:T^1 \to [0,1]^3$ and $I^2:T^2\to[0,1]^3$ where $T^1, T^2$ are sets of pixels. We define the configuation $\mathbf{x}$ as components
+	\begin{equation}
+	 	x_s = (x_s^1, x_s^2),\ s\in T^1
+	\end{equation} 
+	representing a 2D displacement field over $T^1$. Coordinates $x_s^1$ and $x_s^2$ denote $x$ and $y$ displacements of pixel $s$, respectively, taking value from $L = \{K_{min},...,K_{max}\}$. So our deformation for some pixel $I_s$ is defined as 
+	\begin{equation}
+		D_{\mathbf{x}}(I_s) = I_{s+x_s}
+	\end{equation}
+	For each pixel $s\in T$, we have a specific deformation. And this is we called \emph{Non-Rigid Deformation}. Thus, we define the unary term of energy function as $\displaystyle{\theta_s(x_s) = \frac{(I_s^1 - I_{s+x_s}^2)^2}{2\sigma_I^2}}$, and the pairwise term is defined as $\displaystyle{\theta_{st}(x_s, x_t) = \frac{||x_s-x_t||^2}{2\sigma_x^2},\ (s,t)\in\mathbb{E}}$ where $\mathbb{E}$ is the set of all horizontally and vertically neighbouring pairs of pixels(See Fig. 1).
+	\begin{figure}[!hbp]
+	\centering
+	\includegraphics[scale = 0.75]{energy.png}
+	\caption{Deformation as pairwise MRF}
+	\end{figure}
+	\subsubsection{Decomposed Model} We propose a model of \emph{Decomposed Model} \cite{kovtun2004image}, representing $x$ and $y$ displacements by two interacting fields, referred as \emph{layers}. Layer $\Phi^1$ denotes $x$ displacement, and $\Phi_2$ denotes $y$ displacement. Thus our configuration is defined as $\mathbf{x} = \{x_{s^i}|s^i\in\Phi^i,\ i = 1,2\}$. Then the unary term is
+	\begin{equation}
+		\theta_s{x_s} = \frac{\left(I_s^1 - I_{s+(x_{s^1}, x_{s^2})}\right)^2}{2\sigma_I^2}
+	\end{equation}
+	And the pairwise term is
+	\begin{equation}
+		\theta_{st}\left(x_s, x_t\right) = \frac{\left(x_s - x_t\right)^2}{2\sigma_x^2},\ (s,t)\in\mathbb{E}
+	\end{equation}
+	See Fig. 2.
+	\begin{figure}[!hb]
+	\centering
+	\includegraphics[scale=0.7]{decompose.png}
+	\caption{Decomposed Model}
+	\end{figure}
+	\subsection{Improvements}
+		\subsubsection{Block Model}
+			If we minimize the energy over all pixels in the image, it will consume a lot of time. So we split the image into blocks to accelerate the compuation. Here we choose block size as 4 pixels. To avoid overfitting, we require the deformation field to be locally affine. As we consider discrete models, we want the deformation field to be described locally by translations. We propose to aggregate pixels into blocks and allow each block to have displacements with a pixel precision. We do not penalize relative displacements of $\pm 1$ pixel in vertical and horizontal directions(see Fig. 3), and completely forbid larger displacements.
+			\begin{figure}[!hb]
+			\centering
+			\includegraphics[scale = 0.85]{block.png}
+			\caption{Block Model: (a) two neighboring blocks (b)-(d) examples which are not penalized}
+			\end{figure}
+			So we define the unary term as 
+			\begin{equation}
+				\theta_s(x_s) = \frac{1}{2\sigma_I^2} d(I_s^1, I_{s+(x_{s^1}, x_{s^2})})
+			\end{equation}
+			where $d(\cdot,\cdot)$ denots for the distance function of two blocks specified in the following. As for the pairwise term, it's defined as
+			\begin{equation}
+				\theta_{st}(x_s, x_t) = \left\{\begin{array}{ll}
+				0 & x_s = x_t \\
+				C_r & |x_s - x_t| \leqslant 1\\
+				\infty & |x_s - x_t| > 1
+				\end{array}\right.
+			\end{equation}
+			where $\displaystyle{0 < C_r \ll \frac{1}{\sigma_I^2}}$ and we take $C_r = 0.001$ in implementation.
+		\subsubsection{Distance of Blocks}
+\section{Minimize Energy Function}
+	\subsection{ICM}
+	Iterative Conditional Modes(ICM)\cite{besag1986} is firstly used to minimize our MRF energy function by us because it can be implemented simply. We will introduce its pipeline and then show the result of this optimization method.
+		\subsubsection{ICM Pipeline}
+			As for ICM, it traverses the whole label space for each graph nodes. First, we initialize the graph nodes with random labels, then the iteration begins. In each iteration, for every graph node, we try every possible label for it, checking if the energy is smaller than previous configuration. If yes, we update the node with this label. Because we update the labels for nodes only when the energy under current configuration is smaller than previous configuration, it's guaranteed to converge. The pipeline is shown in Algorithm 1.
+			\begin{algorithm}
+			\caption{Pipeline for ICM}
+			\begin{algorithmic}
+			\State Initialize each node with a random label
+			\While{(Iteration Not Ends)}
+				\For{Node $i$ in all graph Nodes}
+					\For{Possible Labels for node $i$}
+						\If{(Energy is smaller than previous configuration)}
+							\State Label for node $i$ := label $j$ 
+						\EndIf
+					\EndFor
+				\EndFor
+				\State Store current configuration
+			\EndWhile
+			\end{algorithmic}
+			\end{algorithm}
+
+		\subsubsection{Result}
+		We use the human face emotion change to show our result(Fig. 4).
+		\begin{figure}[!hb]
+		\centering
+		\includegraphics[scale=0.4]{../Result/new-face3.jpg}
+		\caption{Result of ICM. Left: the template face. Right: the target face}
+		\end{figure}
+		We only show the blocks on both template face and target face on the boundary because it will cover the whole face if all blocks are shown. We can see from the result that the deformation of human faces is modeled very well and accurate under the circumstance where the emotion doesn't change too much. Because we restrict that neighboring blocks can't move apart too much, we can model small deformation very well. And since ICM searches for the whold label space and only updates labels when MRF energy is smaller, it's guaranteed to converge.\\
+		However, ICM has some shortages. First, it runs very slow. In our experiment\footnote{Intel Core i7 2.7GHz, 8GB DDR3 RAM}, it takes about 30 minutes to compute the deformation for the image shown in Fig. 4, which has 335 blocks. In the future, it will much faster if we use parallel computing because we find that only a single core of CPU is utilized during the computation. Second, if may fall into local minimum.
+	\subsection{TRW-S}
+		\subsubsection{TRW-S Pipeline}
+		\subsubsection{Result}
+
+\section{Summary and Future Work}
+
+\phantomsection
+\bibliography{tex}
+
+\end{document}
