@@ -63,7 +63,7 @@ void testPotts()
 	delete mrf;
 }
 
-void main()
+int main()
 {
 	testPotts();
 	int i=0;
