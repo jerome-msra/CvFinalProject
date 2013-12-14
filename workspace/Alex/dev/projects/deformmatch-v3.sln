@@ -1,8 +1,11 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "exttype", "exttype\exttype.vcxproj", "{E81D3529-BD7A-4AA8-A868-33349102D1DD}"
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "exttype", "exttype\exttype.vcproj", "{E81D3529-BD7A-4AA8-A868-33349102D1DD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "maxplus", "maxplus\maxplus.vcxproj", "{B225A6CF-FF6A-476C-9AE9-9769BF17C51C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "maxplus", "maxplus\maxplus.vcproj", "{B225A6CF-FF6A-476C-9AE9-9769BF17C51C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E81D3529-BD7A-4AA8-A868-33349102D1DD} = {E81D3529-BD7A-4AA8-A868-33349102D1DD}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
