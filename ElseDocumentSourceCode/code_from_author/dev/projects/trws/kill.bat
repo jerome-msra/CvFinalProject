@@ -1,1 +1,0 @@
-@for %%I in (%1) do @if exist "%%~fI" del "%%~fI"

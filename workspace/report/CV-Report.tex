@@ -120,7 +120,7 @@ We will introduce the algorithm in Section 2, and present the result in Section 
 	\subsection{ICM}
 	Iterative Conditional Modes(ICM)\cite{besag1986} is firstly used to minimize our MRF energy function by us because it can be implemented simply. We will introduce its pipeline and then show the result of this optimization method.
 		\subsubsection{ICM Pipeline}
-        
+
 			As for ICM, it traverses the whole label space for each graph nodes. First, we initialize the graph nodes with random labels, then the iteration begins. In each iteration, for every graph node, we try every possible label for it, checking if the energy is smaller than previous configuration. If yes, we update the node with this label. Because we update the labels for nodes only when the energy under current configuration is smaller than previous configuration, it's guaranteed to converge. The pipeline is shown in Algorithm 1.
 			\begin{algorithm}
 			\caption{Pipeline for ICM}
@@ -139,8 +139,8 @@ We will introduce the algorithm in Section 2, and present the result in Section 
 			\end{algorithmic}
 			\end{algorithm}
         \subsubsection{Define the distance of colors}
-        
-        For the color comparison we use 
+
+        For the color comparison we use
         \begin{equation}
         	F_{\lambda}(c_{1},c_{2}) = {\lambda}^{2} \times \frac{\langle c_{1}-c_{2}, c_{2} \rangle }{ {\left \| c_{2} \right \|}^{2} } + \left(c_{1}-  {\langle c_{1},c_{2} \rangle} \times \frac{c_{2}}{\left \| c_{2} \right \|}^{2}\right)^{2}
         \end{equation}
@@ -148,14 +148,14 @@ We will introduce the algorithm in Section 2, and present the result in Section 
         For $d(x,y)$, we use
         \begin{equation}
             d(x,y) = \frac{1}{N} \sum_{k=1}^N  F_{\lambda}\left({x^{i},y^{i}}\right)
-        \end{equation} 
-        where $x^{i}, y^{i}$ are colors of pixels in correspondence. We set $\sigma_{I} = 1 $.     
-                
-        
+        \end{equation}
+        where $x^{i}, y^{i}$ are colors of pixels in correspondence. We set $\sigma_{I} = 1 $.
+
+
         \subsubsection{Speed up computation}
 
         We use \textbf{rgb2ind} method in MATLAB to convert RGB color space($256^3$ colors) to 32 colors, which makes computation much more faster as for the computation of color distance. What's more, We use the mix-compile of MATLAB and Java to maintain a Java hashtable, containing $\left(c_{1},c_{2},d(c_{1},c_{2})\right)$. In each computing, our method searches the hashtable first. If the table has the tuple$(c_{1},c_{2})$, the hashtable returns the $d(c_{1},c_{2})$. If not, the programming calculates the distance $d(c_{1},c_{2})$, depending on the definition and saves $\left(c_{1},c_{2},d(c_{1},c_{2})\right)$.
-    
+
 		\subsubsection{Result}
 		We use the human face emotion change to show our result(Fig. 4).
 		\begin{figure}[!ht]
@@ -165,13 +165,13 @@ We will introduce the algorithm in Section 2, and present the result in Section 
 		\end{figure}
 		We only show the blocks on both template face and target face on the boundary because it will cover the whole face if all blocks are shown. We can see from the result that the deformation of human faces is modeled very well and accurate under the circumstance where the emotion doesn't change too much. Because we restrict that neighboring blocks can't move apart too much, we can model small deformation very well. And since ICM searches for the whold label space and only updates labels when MRF energy is smaller, it's guaranteed to converge.\\
 		However, ICM has some shortages. First, it runs very slow. In our experiment\footnote{Intel Core i7 2.7GHz, 8GB DDR3 RAM}, it takes about 30 minutes to compute the deformation for the image shown in Fig. 4, which has 335 blocks. In the future, it will much faster if we use parallel computing because we find that only a single core of CPU is utilized during the computation. Second, if may fall into local minimum.
-    
+
 	\subsection{TRW-S}
-		\subsubsection{TRW-S}
-        The tree-reweighted message passing (TRW) techniques\cite{kolmogorov2006convergent}, which approach the solution to MRF-LP via a dual problem defined by a convex combination of trees.
+		\subsubsection{TRW-S\cite{Chaohui2013}}
+        The tree-reweighted message passing (TRW) techniques\cite{kolmogorov2006convergent}, which approach the solution to MRF-LP via a dual problem defined by a convex combination of trees.\\
         A sequential message passing scheme (known as TRW-S) was proposed in this method. It updates messages in a sequential order instead of a parallel order used in TRW-E and TRW-T, which makes the lower bound will not decrease in TRW-S.\\
         Regarding the convergence, TRW-S will attain a point that satisfies a condition referred to as weak tree agreement and the lower bound will not change any more since then.\\
-        Regarding the optimality, TRW-S cannot guarantee the global maximum of the lower bound in general. 
+        Regarding the optimality, TRW-S cannot guarantee the global maximum of the lower bound in general.
 		\subsubsection{Result}
         In this project, we respect the TRW-S code in \cite{shekhovtsov2008efficient}. The result are shown as Fig. 5.
         \begin{figure}[!ht]
@@ -193,7 +193,24 @@ We will introduce the algorithm in Section 2, and present the result in Section 
         \end{figure}
         As seen in the result, eyes of the figure in the image are a little opened in the morphing image, compared with the widely opened eyes in the template image and completely closed eyes in the target image. However, because we only use the information from target image and we choose block size as 1 pixel in this experiment, the result has some alias.
 \section{Summary and Future Work}
+\subsection{Summary}
+        In sum, Jason and Jian use the image color information, continuous constrain and MRF algorithm to implement image registration. Jason and Jian construct the two layer model and energy function.\\
+        According to MRF algorithm, Jason and Jian implement Iterated Conditional Modes to search fragment and its found deformations superimposed, in addition  also refer author's paper and tree-reweighted message passing algorithm to complete the face morphing. \\
 
+
+\subsection{Future Work}
+        There are two improvements could be done in the next work .\\
+        \begin{itemize}
+          \item
+          The morphing result has some blur in detail. We think the solution is adjusting the model's flexibility parameter $c_{r}$.
+          \item
+          If we combine the geometry information such as face mesh, the result maybe more accurate.
+     
+       \end{itemize}
+        
+        
+        
+        
 \phantomsection
 \bibliography{tex}
 

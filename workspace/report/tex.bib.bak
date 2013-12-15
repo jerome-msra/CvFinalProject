@@ -39,14 +39,4 @@
   pages={1568--1583},
   year={2006},
   publisher={IEEE}
-
-@article{Chaohui2013,
-  title={Markov Random Field modeling, inference and learning in computer vision image understanding A survey},
-  author={ Nikos Komodakis,Nikos Paragios,ChaoHui Wang},
-  journal={Computer Vision and Image Understanding},
-  volume={117},
-  number={11},
-  pages={1610--1627},
-  year={2013}
-
 }

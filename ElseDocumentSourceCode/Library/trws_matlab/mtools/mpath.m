@@ -1,2 +1,0 @@
-maddpath('.');
-maddpath('img');
