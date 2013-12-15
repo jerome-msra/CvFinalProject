@@ -17,7 +17,7 @@ originTemplateImage = imread('../images/template.png');		% Template Image
 originTarget1 = imread('../images/target1.png');	% Target Images
 originTarget2 = imread('../images/target2.png');
 originTarget3 = imread('../images/target3.png');
-origintarget4 = imread('../images/target4.png');
+originTarget4 = imread('../images/target4.png');
 
 grayTemplateImage = rgb2gray(originTemplateImage);
 grayTarget1 = rgb2gray(originTarget1);
