@@ -118,7 +118,7 @@ We will introduce the algorithm in Section 2, and present the result in Section 
 		\subsubsection{Distance of Blocks}
 \section{Minimize Energy Function}
 	\subsection{ICM}
-	Iterative Conditional Modes(ICM)\cite{besag1986} is firstly used to minimize our MRF energy function because it can be implemented simply. We will introduce its pipeline and then show the result of this optimization.
+	Iterative Conditional Modes(ICM)\cite{besag1986} is firstly used to minimize our MRF energy function by us because it can be implemented simply. We will introduce its pipeline and then show the result of this optimization method.
 		\subsubsection{ICM Pipeline}
 			As for ICM, it traverses the whole label space for each graph nodes. First, we initialize the graph nodes with random labels, then the iteration begins. In each iteration, for every graph node, we try every possible label for it, checking if the energy is smaller than previous configuration. If yes, we update the node with this label. Because we update the labels for nodes only when the energy under current configuration is smaller than previous configuration, it's guaranteed to converge. The pipeline is shown in Algorithm 1.
 			\begin{algorithm}
@@ -145,7 +145,8 @@ We will introduce the algorithm in Section 2, and present the result in Section 
 		\includegraphics[scale=0.4]{../Result/new-face3.jpg}
 		\caption{Result of ICM. Left: the template face. Right: the target face}
 		\end{figure}
-		We only show the blocks on both template face and target face on the boundary because it will cover the whole face if all blocks are shown. We can see from the result that the deformation of human faces is modeled very well and accurate under the circumstance where the emotion doesn't change too much. Because we restrict that neighboring blocks can't move apart too much, we can model small deformation very well.
+		We only show the blocks on both template face and target face on the boundary because it will cover the whole face if all blocks are shown. We can see from the result that the deformation of human faces is modeled very well and accurate under the circumstance where the emotion doesn't change too much. Because we restrict that neighboring blocks can't move apart too much, we can model small deformation very well. And since ICM searches for the whold label space and only updates labels when MRF energy is smaller, it's guaranteed to converge.\\
+		However, ICM has some shortages. First, it runs very slow. In our experiment\footnote{Intel Core i7 2.7GHz, 8GB DDR3 RAM}, it takes about 30 minutes to compute the deformation for the image shown in Fig. 4, which has 335 blocks. In the future, it will much faster if we use parallel computing because we find that only a single core of CPU is utilized during the computation. Second, if may fall into local minimum.
 	\subsection{TRW-S}
 		\subsubsection{TRW-S Pipeline}
 		\subsubsection{Result}

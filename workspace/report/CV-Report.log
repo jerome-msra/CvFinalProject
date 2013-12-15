@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  12 DEC 2013 23:43
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  14 DEC 2013 21:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -451,29 +451,32 @@ File: ../Result/new-face3.jpg Graphic file (type jpg)
 <use ../Result/new-face3.jpg>
 Package pdftex.def Info: ../Result/new-face3.jpg used on input line 145.
 (pdftex.def)             Requested size: 353.31374pt x 123.2583pt.
- (./CV-Report.bbl [4pdfTeX warning (ext4): destination with the same identifier
- (name{figure.4}) has been already used, duplicate ignored
+ (./CV-Report.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.21 \end{thebibliography}
-                           <../Result/new-face3.jpg>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 158.
+l.9 \bibitem{kovtun2004image}
+                              <../Result/new-face3.jpg>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 159.
  [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 158.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 159.
  (./CV-Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 158.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 158.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 159.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 159.
 Package rerunfilecheck Info: File `CV-Report.out' has not changed.
 (rerunfilecheck)             Checksum: ACB31DEB24D0A84B08FE9C866E03ED70;1041.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 158.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 159.
  ) 
 Here is how much of TeX's memory you used:
- 7852 strings out of 493488
- 114197 string characters out of 3141326
+ 7882 strings out of 493488
+ 114490 string characters out of 3141326
  205079 words of memory out of 3000000
- 11010 multiletter control sequences out of 15000+200000
- 16493 words of font info for 40 fonts, out of 3000000 for 9000
+ 11027 multiletter control sequences out of 15000+200000
+ 24970 words of font info for 60 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  37i,8n,39p,662b,418s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -494,10 +497,10 @@ texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2012/texmf-di
 st/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on CV-Report.pdf (5 pages, 319267 bytes).
+Output written on CV-Report.pdf (5 pages, 319925 bytes).
 PDF statistics:
- 198 PDF objects out of 1000 (max. 8388607)
- 168 compressed objects within 2 object streams
- 40 named destinations out of 1000 (max. 500000)
+ 200 PDF objects out of 1000 (max. 8388607)
+ 170 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 500000)
  149 words of extra memory for PDF output out of 10000 (max. 10000000)
 
