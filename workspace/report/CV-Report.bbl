@@ -6,6 +6,12 @@ Julian Besag.
 \newblock {\em Journal of the Royal Statistical Society. Series B
   (Methodological)}, 48(3):pp. 259--302, 1986.
 
+\bibitem{kolmogorov2006convergent}
+Vladimir Kolmogorov.
+\newblock Convergent tree-reweighted message passing for energy minimization.
+\newblock {\em Pattern Analysis and Machine Intelligence, IEEE Transactions
+  on}, 28(10):1568--1583, 2006.
+
 \bibitem{kovtun2004image}
 I~Kovtun.
 \newblock {\em Image segmentation based on sufficient conditions of optimality
