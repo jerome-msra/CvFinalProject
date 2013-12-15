@@ -23,7 +23,7 @@ grayTemplateImage = rgb2gray(originTemplateImage);
 grayTarget1 = rgb2gray(originTarget1);
 grayTarget2 = rgb2gray(originTarget2);
 grayTarget3 = rgb2gray(originTarget3);
-grayTarget4 = rgb2gray(origintarget4);
+grayTarget4 = rgb2gray(originTarget4);
 
 blockSize = 4;
 % Get the blocks
