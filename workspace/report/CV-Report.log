@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  17 DEC 2013 22:10
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  18 DEC 2013 14:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -452,86 +452,86 @@ File: ../Result/new-face3.jpg Graphic file (type jpg)
 <use ../Result/new-face3.jpg>
 Package pdftex.def Info: ../Result/new-face3.jpg used on input line 163.
 (pdftex.def)             Requested size: 353.31374pt x 123.2583pt.
+ <showPlant.jpg, id=139, 1204.5pt x 903.375pt>
+File: showPlant.jpg Graphic file (type jpg)
+
+<use showPlant.jpg>
+Package pdftex.def Info: showPlant.jpg used on input line 169.
+(pdftex.def)             Requested size: 240.89574pt x 180.6718pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 170.
+(hyperref)                removing `\@ifnextchar' on input line 176.
 
-[4] <showPlant.jpg, id=151, 1204.5pt x 903.375pt>
-File: showPlant.jpg Graphic file (type jpg)
- <use showPlant.jpg>
-Package pdftex.def Info: showPlant.jpg used on input line 179.
-(pdftex.def)             Requested size: 240.89574pt x 180.6718pt.
-
-<showBrain.jpg, id=152, 1616.0375pt x 421.575pt>
+[4] <showBrain.jpg, id=152, 1616.0375pt x 421.575pt>
 File: showBrain.jpg Graphic file (type jpg)
  <use showBrain.jpg>
-Package pdftex.def Info: showBrain.jpg used on input line 185.
+Package pdftex.def Info: showBrain.jpg used on input line 186.
 (pdftex.def)             Requested size: 404.00839pt x 105.39348pt.
 
-Overfull \hbox (6.5234pt too wide) in paragraph at lines 185--186
+Overfull \hbox (6.5234pt too wide) in paragraph at lines 186--187
  [][] 
  []
 
 <faceMorph.jpg, id=153, 602.25pt x 451.6875pt>
 File: faceMorph.jpg Graphic file (type jpg)
  <use faceMorph.jpg>
-Package pdftex.def Info: faceMorph.jpg used on input line 191.
+Package pdftex.def Info: faceMorph.jpg used on input line 192.
 (pdftex.def)             Requested size: 301.12425pt x 225.84319pt.
  [5pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.195 \section
+l.196 \section
               {Summary and Future Work}pdfTeX warning (ext4): destination with 
 the same identifier (name{figure.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.195 \section
+l.196 \section
               {Summary and Future Work} <../Result/new-face3.jpg> <./showPlant.
 jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 197--199
+Underfull \hbox (badness 10000) in paragraph at lines 198--200
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 205.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 206.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 205.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 206.
  [6pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.207 	  I
+l.208 	  I
           f we combine the geometry information such as face mesh, the resul...
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
 s been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.207 	  I
+l.208 	  I
           f we combine the geometry information such as face mesh, the resul...
  <./showBrain.jpg> <./faceMorph.jpg>] (./CV-Report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 240.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 241.
  [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 240.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 241.
  (./CV-Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 240.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 240.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 241.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 241.
 Package rerunfilecheck Info: File `CV-Report.out' has not changed.
-(rerunfilecheck)             Checksum: 0FEF3113E10ADF086BF3D5B34F717B4B;1374.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 240.
+(rerunfilecheck)             Checksum: 4C02E1F467022E190F177AD46F9112B7;1377.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 241.
  ) 
 Here is how much of TeX's memory you used:
  7936 strings out of 493488
- 115364 string characters out of 3141326
- 207161 words of memory out of 3000000
+ 115370 string characters out of 3141326
+ 208164 words of memory out of 3000000
  11061 multiletter control sequences out of 15000+200000
  24970 words of font info for 60 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -554,7 +554,7 @@ texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2012/texmf-di
 st/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on CV-Report.pdf (7 pages, 1499285 bytes).
+Output written on CV-Report.pdf (7 pages, 1499749 bytes).
 PDF statistics:
  247 PDF objects out of 1000 (max. 8388607)
  211 compressed objects within 3 object streams

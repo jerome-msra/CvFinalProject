@@ -19,16 +19,16 @@ I~Kovtun.
 \newblock PhD thesis, PhD thesis, IRTC ITS National Academy of Sciences,
   Ukraine, 2004.(In Ukranian), 2004.
 
-\bibitem{Chaohui2013}
-ChaoHui~Wang Nikos~Komodakis, Nikos~Paragios.
-\newblock Markov random field modeling, inference and learning in computer
-  vision image understanding a survey.
-\newblock {\em Computer Vision and Image Understanding}, 117(11):1610--1627,
-  2013.
-
 \bibitem{shekhovtsov2008efficient}
 Alexander Shekhovtsov, Ivan Kovtun, and V{\'a}clav Hlav{\'a}{\v{c}}.
 \newblock Efficient mrf deformation model for non-rigid image matching.
 \newblock {\em Computer Vision and Image Understanding}, 112(1):91--99, 2008.
+
+\bibitem{wang2013markov}
+Chaohui Wang, Nikos Komodakis, and Nikos Paragios.
+\newblock Markov random field modeling, inference \& learning in computer
+  vision \& image understanding: A survey.
+\newblock {\em Computer Vision and Image Understanding}, 117(11):1610--1627,
+  2013.
 
 \end{thebibliography}

@@ -3,39 +3,34 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: CV-Report.aux
 The style file: plain.bst
 Database file #1: tex.bib
-I was expecting a `,' or a `}'---line 43 of file tex.bib
- : 
- : @article{Chaohui2013,
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 You've used 5 entries,
             2118 wiz_defined-function locations,
-            535 strings with 5003 characters,
-and the built_in function-call counts, 1516 in all, are:
-= -- 157
-> -- 46
+            534 strings with 5009 characters,
+and the built_in function-call counts, 1583 in all, are:
+= -- 162
+> -- 57
 < -- 0
-+ -- 19
-- -- 14
-* -- 113
-:= -- 262
++ -- 23
+- -- 18
+* -- 122
+:= -- 274
 add.period$ -- 15
 call.type$ -- 5
-change.case$ -- 21
+change.case$ -- 23
 chr.to.int$ -- 0
 cite$ -- 5
 duplicate$ -- 53
 empty$ -- 129
-format.name$ -- 14
-if$ -- 307
+format.name$ -- 18
+if$ -- 319
 int.to.chr$ -- 0
 int.to.str$ -- 5
 missing$ -- 4
 newline$ -- 28
 num.names$ -- 10
-pop$ -- 13
+pop$ -- 15
 preamble$ -- 1
-purify$ -- 17
+purify$ -- 19
 quote$ -- 0
 skip$ -- 34
 stack$ -- 0
@@ -49,4 +44,3 @@ warning$ -- 0
 while$ -- 17
 width$ -- 6
 write$ -- 57
-(There was 1 error message)
