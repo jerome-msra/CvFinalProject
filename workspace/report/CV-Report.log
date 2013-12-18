@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  17 DEC 2013 17:41
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  17 DEC 2013 22:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**CV-Report.tex
+**CV-Report.tex -recorder
 (./CV-Report.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
@@ -406,19 +406,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 67--69
 [1
 
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<energy.png, id=105, 381.425pt x 175.65625pt>
+<energy.png, id=109, 381.425pt x 175.65625pt>
 File: energy.png Graphic file (type png)
  <use energy.png>
 Package pdftex.def Info: energy.png used on input line 80.
 (pdftex.def)             Requested size: 286.06804pt x 131.74185pt.
 
-<decompose.png, id=107, 441.65pt x 205.76875pt>
+<decompose.png, id=111, 441.65pt x 205.76875pt>
 File: decompose.png Graphic file (type png)
  <use decompose.png>
 Package pdftex.def Info: decompose.png used on input line 94.
 (pdftex.def)             Requested size: 309.15288pt x 144.03712pt.
 
-<block.png, id=108, 361.35pt x 161.60374pt>
+<block.png, id=112, 361.35pt x 161.60374pt>
 File: block.png Graphic file (type png)
  <use block.png>
 Package pdftex.def Info: block.png used on input line 102.
@@ -446,7 +446,7 @@ l.141         \subsubsection
                                                   \fi \fi 
 l.141         \subsubsection
                             {Define the distance of colors} <./decompose.png> <
-./block.png>] <../Result/new-face3.jpg, id=134, 883.3pt x 308.15125pt>
+./block.png>] <../Result/new-face3.jpg, id=138, 883.3pt x 308.15125pt>
 File: ../Result/new-face3.jpg Graphic file (type jpg)
 
 <use ../Result/new-face3.jpg>
@@ -457,13 +457,13 @@ Package pdftex.def Info: ../Result/new-face3.jpg used on input line 163.
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\@ifnextchar' on input line 170.
 
-[4] <showPlant.jpg, id=147, 1204.5pt x 903.375pt>
+[4] <showPlant.jpg, id=151, 1204.5pt x 903.375pt>
 File: showPlant.jpg Graphic file (type jpg)
  <use showPlant.jpg>
 Package pdftex.def Info: showPlant.jpg used on input line 179.
 (pdftex.def)             Requested size: 240.89574pt x 180.6718pt.
 
-<showBrain.jpg, id=148, 1616.0375pt x 421.575pt>
+<showBrain.jpg, id=152, 1616.0375pt x 421.575pt>
 File: showBrain.jpg Graphic file (type jpg)
  <use showBrain.jpg>
 Package pdftex.def Info: showBrain.jpg used on input line 185.
@@ -473,7 +473,7 @@ Overfull \hbox (6.5234pt too wide) in paragraph at lines 185--186
  [][] 
  []
 
-<faceMorph.jpg, id=149, 602.25pt x 451.6875pt>
+<faceMorph.jpg, id=153, 602.25pt x 451.6875pt>
 File: faceMorph.jpg Graphic file (type jpg)
  <use faceMorph.jpg>
 Package pdftex.def Info: faceMorph.jpg used on input line 191.
@@ -496,57 +496,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 197--199
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 202--203
-
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [6pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.205           T
-                 he morphing result has some blur in detail. We think the so...
-pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
-s been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.205           T
-                 he morphing result has some blur in detail. We think the so...
- <./showBrain.jpg> <./faceMorph.jpg>]
 LaTeX Font Info:    Try loading font information for OMS+ptm on input line 205.
-
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 205.
+ [6pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
+ has been already used, duplicate ignored
 
-(./CV-Report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 217.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.207 	  I
+          f we combine the geometry information such as face mesh, the resul...
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
+s been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.207 	  I
+          f we combine the geometry information such as face mesh, the resul...
+ <./showBrain.jpg> <./faceMorph.jpg>] (./CV-Report.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 240.
  [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 217.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 240.
  (./CV-Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 217.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 217.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 240.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 240.
 Package rerunfilecheck Info: File `CV-Report.out' has not changed.
-(rerunfilecheck)             Checksum: 916CDB4001FFB85A98E6B911391CD52B;1330.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 217.
+(rerunfilecheck)             Checksum: 0FEF3113E10ADF086BF3D5B34F717B4B;1374.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 240.
  ) 
 Here is how much of TeX's memory you used:
- 7934 strings out of 493488
- 115344 string characters out of 3141326
+ 7936 strings out of 493488
+ 115364 string characters out of 3141326
  207161 words of memory out of 3000000
- 11060 multiletter control sequences out of 15000+200000
+ 11061 multiletter control sequences out of 15000+200000
  24970 words of font info for 60 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,8n,39p,653b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,8n,39p,663b,372s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texl
@@ -565,10 +554,10 @@ texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2012/texmf-di
 st/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on CV-Report.pdf (7 pages, 1498660 bytes).
+Output written on CV-Report.pdf (7 pages, 1499285 bytes).
 PDF statistics:
- 242 PDF objects out of 1000 (max. 8388607)
- 206 compressed objects within 3 object streams
- 54 named destinations out of 1000 (max. 500000)
- 196 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 247 PDF objects out of 1000 (max. 8388607)
+ 211 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 204 words of extra memory for PDF output out of 10000 (max. 10000000)
 
